@@ -7,13 +7,13 @@ const YT_CHANNEL = "https://www.youtube.com/@HumbleConvictionStartups";
 const LINKEDIN = "https://www.linkedin.com/in/brianhecht/";
 const CONTACT = "mailto:brian@thenewbuilder.ai";
 const LATEST_VIDEO_ID = "_3601d3OpYY";
-const RIVERSIDE_EPISODE_ID = "7e6dc792-8a90-443d-bcbb-28090ed39313";
+const RIVERSIDE_EPISODE_URL = `https://share.riverside.fm/episode/7e6dc792-8a90-443d-bcbb-28090ed39313`;
 
 const CARDS = [
   {
     label: "Podcast",
     desc: "Weekly conversations with founders and builders navigating the AI era.",
-    href: YT_CHANNEL,
+    href: RIVERSIDE_EPISODE_URL,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
@@ -234,23 +234,6 @@ export default function Home() {
               style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
             />
           </div>
-        </section>
-
-        <hr style={{ border: "none", borderTop: "1px solid #e5e7eb", marginBottom: 64 }} />
-
-        {/* Podcast */}
-        <section style={{ marginBottom: 64 }}>
-          <h2 style={{ fontSize: "clamp(24px, 3vw, 32px)", fontWeight: 800, marginBottom: 28 }}>
-            Listen to the Podcast
-          </h2>
-          <iframe
-            src={`https://share.riverside.fm/episode/${RIVERSIDE_EPISODE_ID}`}
-            width="100%"
-            height="180"
-            frameBorder={0}
-            scrolling="no"
-            style={{ maxWidth: 800, display: "block", borderRadius: 12 }}
-          />
         </section>
 
         <hr style={{ border: "none", borderTop: "1px solid #e5e7eb", marginBottom: 64 }} />
