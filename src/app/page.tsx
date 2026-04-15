@@ -137,14 +137,17 @@ export default function Home() {
         {/* Hero */}
         <section className="hero-section" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center", marginBottom: 64 }}>
           <div style={{ display: "flex", justifyContent: "flex-start" }}>
-            <div style={{ width: "100%", maxWidth: 400, aspectRatio: "5/6", borderRadius: 16, overflow: "hidden", position: "relative" }}>
+            <div style={{ position: "relative", width: "100%", maxWidth: 400 }}>
               <Image
                 src="/images/brian.png"
                 alt="Brian Hecht"
-                fill
-                style={{ objectFit: "cover", objectPosition: "top center" }}
+                width={400}
+                height={480}
+                style={{ width: "100%", height: "auto", borderRadius: 16, display: "block" }}
                 priority
               />
+              {/* Cover Gemini watermark bottom-right */}
+              <div style={{ position: "absolute", bottom: 10, right: 10, width: 70, height: 28, background: "#F0E6DB", borderRadius: 4 }} />
             </div>
           </div>
           <div>
