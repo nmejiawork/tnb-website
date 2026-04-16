@@ -137,14 +137,23 @@ export default function Home() {
         {/* Hero */}
         <section className="hero-section" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center", marginBottom: 64 }}>
           <div style={{ display: "flex", justifyContent: "flex-start" }}>
-            <Image
-              src="/images/brian.png"
-              alt="Brian Hecht"
-              width={360}
-              height={360}
-              style={{ width: 360, height: 360, objectFit: "cover", borderRadius: "50%" }}
-              priority
-            />
+            <div style={{
+              width: 360,
+              height: 360,
+              borderRadius: "50%",
+              overflow: "hidden",
+              position: "relative",
+              flexShrink: 0,
+              background: "#f0ebe3",
+            }}>
+              <Image
+                src="/images/brian.png"
+                alt="Brian Hecht"
+                fill
+                style={{ objectFit: "cover" }}
+                priority
+              />
+            </div>
           </div>
           <div>
             <h1 style={{ fontSize: "clamp(48px, 7vw, 86px)", fontWeight: 800, lineHeight: 1.02, letterSpacing: "-0.02em" }}>
