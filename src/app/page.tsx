@@ -139,16 +139,9 @@ export default function Home() {
           <div style={{ display: "flex", justifyContent: "flex-start" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
+              id="brian-photo"
               src="/images/brian.png"
               alt="Brian Hecht"
-              style={{
-                width: 360,
-                height: 360,
-                borderRadius: "50%",
-                objectFit: "cover",
-                display: "block",
-                flexShrink: 0,
-              }}
             />
           </div>
           <div>
@@ -326,11 +319,19 @@ export default function Home() {
       </footer>
 
       <style>{`
+        #brian-photo {
+          width: 360px !important;
+          height: 360px !important;
+          border-radius: 50% !important;
+          object-fit: cover !important;
+          display: block !important;
+          flex-shrink: 0;
+        }
         @media (max-width: 768px) {
           .nav-links { display: none !important; }
           .hero-section { grid-template-columns: 1fr !important; gap: 32px !important; }
           .hero-section > div:first-child { justify-content: center !important; }
-          .hero-section img { max-width: 280px !important; }
+          #brian-photo { width: 280px !important; height: 280px !important; }
           .cards-grid { grid-template-columns: 1fr 1fr !important; }
           .subscribe-form { flex-direction: column !important; }
           .subscribe-form input[type="text"] { width: 100% !important; }
@@ -338,7 +339,7 @@ export default function Home() {
         }
         @media (max-width: 480px) {
           main { padding: 32px 6% 48px !important; }
-          .hero-section img { max-width: 220px !important; }
+          #brian-photo { width: 220px !important; height: 220px !important; }
           .cards-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
