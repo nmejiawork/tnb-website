@@ -6,7 +6,7 @@ import Image from "next/image";
 const YT_CHANNEL = "https://www.youtube.com/@HumbleConvictionStartups";
 const LINKEDIN = "https://www.linkedin.com/in/brianhecht/";
 const CONTACT = "mailto:brian@thenewbuilder.ai";
-const LATEST_VIDEO_ID = "_3601d3OpYY";
+const LATEST_VIDEO_ID = "fbAOEBio9QY";
 const RIVERSIDE_EPISODE_URL = `https://share.riverside.fm/episode/7e6dc792-8a90-443d-bcbb-28090ed39313`;
 
 const CARDS = [

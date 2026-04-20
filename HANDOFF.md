@@ -86,3 +86,8 @@ None.
 - Vercel project renamed `newbuilder` → `thenewbuilder`.
 - Code on `nmejiawork/tnb-website` (transfer to `brhecht` pending).
 - **Next:** Brian provides Beehiiv API key + publication ID. Brian adds Nico as collaborator for GitHub auto-deploy.
+
+### April 20, 2026 — Homepage YouTube embed swapped
+- **What shipped:** `LATEST_VIDEO_ID` updated from `_3601d3OpYY` (HC pitching video) to `fbAOEBio9QY` in `src/app/page.tsx`. Latest Episode section on thenewbuilder.ai now shows the new video.
+- **Known issues:** Beehiiv env vars (`BEEHIIV_API_KEY`, `BEEHIIV_PUBLICATION_ID`) still missing in Vercel Production — subscribe form still broken (5 days). Task open in B Things (Today, HC Admin). Unrelated to this change.
+- **Next:** Add Beehiiv env vars + redeploy. GitHub repo transfer `nmejiawork` → `brhecht` still pending.
