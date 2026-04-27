@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
-const YT_CHANNEL = "https://www.youtube.com/@HumbleConvictionStartups";
+const YT_CHANNEL = "https://www.youtube.com/@the_new_builder";
 const LINKEDIN = "https://www.linkedin.com/in/brianhecht/";
 const CONTACT = "mailto:brian@thenewbuilder.ai";
-const LATEST_VIDEO_ID = "fbAOEBio9QY";
 const RIVERSIDE_EPISODE_URL = `https://share.riverside.fm/episode/7e6dc792-8a90-443d-bcbb-28090ed39313`;
 
 const CARDS = [
@@ -86,6 +85,18 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [latestVideoId, setLatestVideoId] = useState("bKFXxGx6JhI");
+  const [latestVideoTitle, setLatestVideoTitle] = useState("Latest Episode");
+
+  useEffect(() => {
+    fetch("/api/latest-video")
+      .then((r) => r.json())
+      .then(({ videoId, title }) => {
+        if (videoId) setLatestVideoId(videoId);
+        if (title) setLatestVideoTitle(title);
+      })
+      .catch(() => {});
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -225,8 +236,8 @@ export default function Home() {
           </h2>
           <div style={{ position: "relative", paddingBottom: "56.25%", width: "100%", maxWidth: 800, borderRadius: 12, overflow: "hidden", background: "#000" }}>
             <iframe
-              src={`https://www.youtube.com/embed/${LATEST_VIDEO_ID}`}
-              title="The New Builder Podcast"
+              src={`https://www.youtube.com/embed/${latestVideoId}`}
+              title={latestVideoTitle}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
