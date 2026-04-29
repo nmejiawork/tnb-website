@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const YT_CHANNEL = "https://www.youtube.com/@the_new_builder";
@@ -80,11 +80,6 @@ const CARDS = [
 ];
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState("");
   const [latestVideoId, setLatestVideoId] = useState("bKFXxGx6JhI");
   const [latestVideoTitle, setLatestVideoTitle] = useState("Latest Episode");
 
@@ -97,25 +92,6 @@ export default function Home() {
       })
       .catch(() => {});
   }, []);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitting(true);
-    setError("");
-    try {
-      const res = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, name, source: "newbuilder-homepage" }),
-      });
-      if (!res.ok) throw new Error("Subscribe failed");
-      setSubmitted(true);
-    } catch {
-      setError("Something went wrong. Please try again.");
-    } finally {
-      setSubmitting(false);
-    }
-  };
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
@@ -252,38 +228,14 @@ export default function Home() {
           <h2 style={{ fontSize: "clamp(28px, 3.5vw, 38px)", fontWeight: 800, marginBottom: 10 }}>
             Stay in the loop
           </h2>
-          <p style={{ fontSize: 18, color: "#6b7280", marginBottom: 28, maxWidth: 500 }}>
-            A weekly newsletter for founders building in the AI era. Brian&apos;s take + hot takes from builders in the field.
-          </p>
-          {submitted ? (
-            <p style={{ fontSize: 18, fontWeight: 600 }}>You&apos;re in. Watch your inbox.</p>
-          ) : (
-            <form onSubmit={handleSubmit} className="subscribe-form" style={{ display: "flex", gap: 12, maxWidth: 540 }}>
-              <input
-                type="email"
-                placeholder="Email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                style={{ padding: "14px 18px", border: "1px solid #d1d5db", borderRadius: 8, fontSize: 15, fontFamily: "inherit", outline: "none", flex: 1, minWidth: 0 }}
-              />
-              <input
-                type="text"
-                placeholder="First name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                style={{ padding: "14px 18px", border: "1px solid #d1d5db", borderRadius: 8, fontSize: 15, fontFamily: "inherit", outline: "none", width: 160 }}
-              />
-              <button
-                type="submit"
-                disabled={submitting}
-                style={{ background: "#000", color: "#fff", padding: "14px 28px", borderRadius: 8, fontSize: 15, fontWeight: 600, fontFamily: "inherit", border: "none", cursor: submitting ? "not-allowed" : "pointer", whiteSpace: "nowrap", opacity: submitting ? 0.7 : 1 }}
-              >
-                {submitting ? "Subscribing..." : "Subscribe"}
-              </button>
-            </form>
-          )}
-          {error && <p style={{ color: "#ef4444", marginTop: 12, fontSize: 14 }}>{error}</p>}
+          <iframe
+            src="https://thenewbuilder.substack.com/embed"
+            width="480"
+            height="320"
+            style={{ border: "1px solid #EEE", background: "white", display: "block" }}
+            frameBorder={0}
+            scrolling="no"
+          />
         </section>
 
         <hr style={{ border: "none", borderTop: "1px solid #e5e7eb", marginBottom: 64 }} />
