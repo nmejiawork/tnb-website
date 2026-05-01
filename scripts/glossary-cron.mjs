@@ -39,7 +39,7 @@ if (!ANTHROPIC_API_KEY) {
 }
 
 const TARGET_COUNT = MODE === "bootstrap" ? 35 : 7;
-const MODEL = "claude-sonnet-4-5"; // Sonnet 4.5 — cron-class workload, web-search-capable
+const MODEL = "claude-sonnet-4-6"; // Sonnet 4.6 — cron-class workload, web-search-capable
 const MAX_TOKENS = MODE === "bootstrap" ? 24000 : 8000;
 const MAX_WEB_SEARCHES = MODE === "bootstrap" ? 8 : 5;
 
