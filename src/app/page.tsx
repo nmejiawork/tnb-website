@@ -103,6 +103,11 @@ export default function Home() {
             The New Builder
           </span>
           <div className="nav-links" style={{ display: "flex", gap: 24 }}>
+            <a href="/glossary" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}
+               onMouseEnter={e => (e.currentTarget.style.color = "#000")}
+               onMouseLeave={e => (e.currentTarget.style.color = "#9ca3af")}>
+              Glossary
+            </a>
             <a href={YT_CHANNEL} target="_blank" rel="noopener noreferrer" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}
                onMouseEnter={e => (e.currentTarget.style.color = "#000")}
                onMouseLeave={e => (e.currentTarget.style.color = "#9ca3af")}>
@@ -205,6 +210,28 @@ export default function Home() {
 
         <hr style={{ border: "none", borderTop: "1px solid #e5e7eb", marginBottom: 64 }} />
 
+        {/* Glossary band */}
+        <section style={{ marginBottom: 64 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 24 }} className="glossary-band">
+            <div style={{ flex: 1, minWidth: 280 }}>
+              <h2 style={{ fontSize: "clamp(20px, 2.4vw, 26px)", fontWeight: 800, marginBottom: 8, lineHeight: 1.2 }}>
+                New AI words coming at you fast?
+              </h2>
+              <p style={{ fontSize: 16, color: "#6b7280", lineHeight: 1.55, maxWidth: 560 }}>
+                The Glossary has plain-English definitions of the terms builders are using right now. Updated weekly.
+              </p>
+            </div>
+            <a href="/glossary"
+               style={{ display: "inline-block", padding: "12px 22px", border: "1px solid #000", borderRadius: 8, fontSize: 14, fontWeight: 600, color: "#000", whiteSpace: "nowrap", flexShrink: 0 }}
+               onMouseEnter={e => { e.currentTarget.style.background = "#000"; e.currentTarget.style.color = "#fff"; }}
+               onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#000"; }}>
+              Browse the Glossary →
+            </a>
+          </div>
+        </section>
+
+        <hr style={{ border: "none", borderTop: "1px solid #e5e7eb", marginBottom: 64 }} />
+
         {/* Latest Episode */}
         <section style={{ marginBottom: 64 }}>
           <h2 style={{ fontSize: "clamp(24px, 3vw, 32px)", fontWeight: 800, marginBottom: 28 }}>
@@ -262,6 +289,11 @@ export default function Home() {
             &copy; 2026 The New Builder
           </span>
           <div style={{ display: "flex", gap: 20 }}>
+            <a href="/glossary" style={{ fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9ca3af" }}
+               onMouseEnter={e => (e.currentTarget.style.color = "#000")}
+               onMouseLeave={e => (e.currentTarget.style.color = "#9ca3af")}>
+              Glossary
+            </a>
             <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9ca3af" }}
                onMouseEnter={e => (e.currentTarget.style.color = "#000")}
                onMouseLeave={e => (e.currentTarget.style.color = "#9ca3af")}>

@@ -1,0 +1,9 @@
+# content/glossary/
+
+This directory holds one Markdown file per glossary term, written by the
+glossary cron (`.github/workflows/glossary-cron.yml`).
+
+Frontmatter schema is defined in `src/types/glossary.ts`. The cron writes
+files; pages are statically generated at build time by reading them.
+
+Empty until the bootstrap run; the `.gitkeep` keeps the dir tracked.
