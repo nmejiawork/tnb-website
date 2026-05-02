@@ -79,21 +79,30 @@ export default async function GlossaryTermPage({ params }: PageProps) {
         </nav>
 
         <article style={{ maxWidth: 720 }}>
-          {/* Breadcrumb */}
-          <div style={{ fontSize: 12, color: "#9ca3af", marginBottom: 18 }}>
-            <a href="/glossary" style={{ color: "#6b7280", textDecoration: "underline" }}>
-              Glossary
-            </a>{" "}
-            / {term.term}
+          {/* Back to glossary — primary back affordance, replaces former breadcrumb */}
+          <div style={{ marginBottom: 22 }}>
+            <Link
+              href="/glossary"
+              className="g-back-top"
+              style={{ fontSize: 13, color: "#6b7280", textDecoration: "none", display: "inline-block" }}
+            >
+              ← Back to glossary
+            </Link>
           </div>
 
-          {/* Meta strip */}
+          {/* Meta strip — topic is clickable, lands on /glossary filtered to that topic */}
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", marginBottom: 16 }}>
             <span style={{ fontSize: 9, padding: "2px 6px", borderRadius: 3, background: "#f3f4f6", color: "#6b7280", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 500, whiteSpace: "nowrap", lineHeight: 1.4 }}>
               {term.type}
             </span>
             <span style={{ color: "#d1d5db", fontSize: 11 }}>·</span>
-            <span style={{ fontSize: 12, color: "#6b7280" }}>{term.topic}</span>
+            <Link
+              href={`/glossary?topic=${encodeURIComponent(term.topic)}`}
+              className="g-topic-link"
+              style={{ fontSize: 12, color: "#6b7280", textDecoration: "none" }}
+            >
+              {term.topic}
+            </Link>
             <span style={{ color: "#d1d5db", fontSize: 11 }}>·</span>
             <span style={{ fontSize: 12, color: "#9ca3af" }}>Added {addedLabel(term.dateAdded)}</span>
           </div>
@@ -167,12 +176,6 @@ export default async function GlossaryTermPage({ params }: PageProps) {
             </div>
           )}
 
-          {/* Back link */}
-          <div style={{ marginTop: 36 }}>
-            <a href="/glossary" className="g-back" style={{ fontSize: 13, color: "#6b7280", textDecoration: "none" }}>
-              ← Back to glossary
-            </a>
-          </div>
         </article>
       </main>
 
@@ -202,7 +205,8 @@ export default async function GlossaryTermPage({ params }: PageProps) {
       <style>{`
         .g-inline-link:hover { color: #000 !important; border-bottom-color: #000 !important; border-bottom-style: solid !important; }
         .g-related:hover { border-color: #6b7280 !important; }
-        .g-back:hover { color: #000 !important; }
+        .g-back-top:hover { color: #000 !important; }
+        .g-topic-link:hover { color: #000 !important; text-decoration: underline !important; }
         .nav-link-muted:hover { color: #000 !important; }
         .footer-link:hover { color: #000 !important; }
         @media (max-width: 768px) {
