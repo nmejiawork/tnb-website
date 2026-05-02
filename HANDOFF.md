@@ -1,5 +1,5 @@
 # HANDOFF — TNB Website (thenewbuilder.ai)
-*Last updated: May 2, 2026 (post-topic-depth)*
+*Last updated: May 2, 2026 (post-topic-depth + search-on-detail + Suggest)*
 
 ## Project Overview
 The New Builder homepage at thenewbuilder.ai. Public-facing website for the TNB brand. **LIVE as of April 15, 2026.** Now includes a full **Dynamic Glossary** at `/glossary` (shipped May 1-2): **287 AI/builder terms** with weekly auto-update via Anthropic-grounded GitHub Actions cron.
@@ -17,9 +17,12 @@ Created April 15, 2026 to separate the TNB website from `hc-website`. Previously
 - `src/app/icon.svg` — favicon: 5x5 orange grid mark (#EE7C2A / #B0431F checkerboard)
 - `src/app/api/subscribe/route.ts` — Beehiiv email capture endpoint (legacy; subscribe form now uses Substack iframe)
 - `src/app/api/latest-video/route.ts` — YouTube RSS fetch, returns latest video ID (1h cache)
+- `src/app/api/suggest-term/route.ts` — POST handler for the Suggest a term form. Forwards to brain-inbox `/api/send-email`, recipient: brhnyc1970@gmail.com (To) + nico@humbleconviction.com (CC). Single-line flip-back if admin@thenewbuilder.ai gets configured.
 - `src/app/glossary/page.tsx` — `/glossary` index (SSG, browse-first card grid)
-- `src/app/glossary/GlossaryControls.tsx` — client component: search/sort/topic-filter with URL state
-- `src/app/glossary/[slug]/page.tsx` — per-term article (SSG via `generateStaticParams`). Top "← Back to glossary" link, clickable topic chip in meta strip
+- `src/app/glossary/GlossaryControls.tsx` — client component: search/sort/topic-filter with URL state. Now includes inline SuggestPanel on the right edge of the controls row.
+- `src/app/glossary/[slug]/page.tsx` — per-term article (SSG via `generateStaticParams`). New article-controls row at top: back-link + SearchAutocomplete + SuggestPanel.
+- `src/app/glossary/_components/SearchAutocomplete.tsx` — client component: 240px search input + dropdown of matches → click navigates to that term. Used on per-term pages.
+- `src/app/glossary/_components/SuggestPanel.tsx` — client component: "+ Suggest a term" pill button + inline-revealed form. Submits to /api/suggest-term.
 - `src/app/sitemap.ts` — auto-generated sitemap, includes all glossary terms
 - `src/app/robots.ts` — robots.txt
 - `src/lib/glossary.ts` — filesystem reader for `/content/glossary/*.md`, addedLabel helpers
@@ -151,6 +154,19 @@ Auto-deploys from `brhecht/tnb-website` main via Vercel. No manual deploy steps 
 - None blocking. Open questions are all "Brian + future Claude session" things on his timeline (eyeball-pass on the corpus, ad-hoc term additions via manual queue, Anthropic credit top-up for topic-depth resumption).
 
 ## Session Log
+
+### May 2, 2026 (PM-late) — Search-on-detail-page + Suggest a term feature shipped
+- **What shipped:**
+  - **`SearchAutocomplete` component** at `src/app/glossary/_components/SearchAutocomplete.tsx`. Reusable client component: 240px input with magnifier icon, dropdown of matches as you type (term name + alias matching), keyboard nav (ArrowUp/Down + Enter + Escape). Click a match to navigate to that term page. Used in the per-term page article-controls row.
+  - **`SuggestPanel` component** at `src/app/glossary/_components/SuggestPanel.tsx`. "+ Suggest a term" pill button at the right edge of the controls row (visible on both index and per-term pages). Click reveals an inline form below the row with two fields (Term required, Why? optional). Submit POSTs to `/api/suggest-term`.
+  - **`/api/suggest-term` route** at `src/app/api/suggest-term/route.ts`. Forwards form data to existing `brain-inbox-six.vercel.app/api/send-email` endpoint. Recipient: `brhnyc1970@gmail.com` (To) + `nico@humbleconviction.com` (CC). Subject: `TNB Glossary suggestion: <term>`. Body includes term, optional context, and instruction line for approval ("tell Claude in any session 'add X to glossary'").
+  - **GlossaryControls.tsx tweaks:** existing index search input height reduced from 28px → 26px and font from 13px → 12px, matching the locked v4/v5 mockup spec; also added flex-wrap and a flex spacer so SuggestPanel sits at the right edge with form-reveal-below behavior.
+  - **Per-term `[slug]/page.tsx` restructured:** moved back-link out of `<article maxWidth=720>` into a new article-controls row that sits at full main width, alongside SearchAutocomplete and SuggestPanel.
+- **Recipient note:** initial deploy used `admin@thenewbuilder.ai` per Brian's preference; first test email did not deliver (no mailbox/forwarding configured on the .ai domain yet). Flipped to brhnyc + Nico CC fallback. If admin@ ever gets configured, single-line change in `/api/suggest-term/route.ts` to flip back.
+- **Verified end-to-end:** index page Suggest button visible, per-term page has both Suggest + autocomplete search, form submission delivers email successfully (`{ok: true}` from the route + email confirmed received by Brian).
+- **Approval flow** (per Brian's design): user submits → email lands → Brian/Nico decide → in any future Claude session, say *"add X to glossary"* → Claude appends to `scripts/manual-terms.txt`, pushes, next weekly cron picks it up. Zero admin dashboard.
+- **Backlog:** copilot Q&A chat (per-term + corpus-wide semantic search) banked as v2 stretch — still in BUILD-SPEC.md backlog as D1.5.
+- **Next:** None blocking. Glossary is in steady state with full discovery + reader-feedback loop.
 
 ### May 2, 2026 (PM) — Topic-depth × 7 complete + final dedup. Corpus 136 → 287
 - **What shipped:** All 7 topic-depth passes ran successfully after Brian added $25 Anthropic credits.
