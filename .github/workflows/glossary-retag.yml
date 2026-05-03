@@ -1,0 +1,79 @@
+name: Glossary Retag
+
+# One-shot recalibration of the `familiarity` field across the corpus.
+# Two-step: propose → review → apply. Designed to be run once after the
+# May 2 PM-late discovery that the original cron's familiarity rubric was
+# too lenient on the "Common" tier.
+#
+# Step "propose": runs scripts/glossary-retag.mjs with no flag. Commits
+#   scripts/retag-proposal.json. Step summary shows distribution + diff.
+# Step "apply": runs scripts/glossary-retag.mjs --apply. Reads
+#   scripts/retag-proposal.json, rewrites each MD file's frontmatter.
+#   Commits 287-ish file changes (only those whose familiarity changed).
+#
+# After both steps run successfully, this workflow can be deleted — it's
+# a one-off. The cron's prompt is updated separately to use the same rubric.
+
+on:
+  workflow_dispatch:
+    inputs:
+      step:
+        description: 'Step'
+        required: true
+        default: 'propose'
+        type: choice
+        options:
+          - propose
+          - apply
+
+jobs:
+  retag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install script dependencies
+        run: npm install --no-save --no-package-lock gray-matter @anthropic-ai/sdk
+
+      - name: Run retag script
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          STEP="${{ github.event.inputs.step }}"
+          if [ "$STEP" = "apply" ]; then
+            node scripts/glossary-retag.mjs --apply
+          else
+            node scripts/glossary-retag.mjs | tee /tmp/retag.log
+            # Capture the diff section into the step summary
+            echo "## Retag Proposal" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            sed -n '/=== DISTRIBUTION ===/,$p' /tmp/retag.log >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          STEP="${{ github.event.inputs.step }}"
+          if [ "$STEP" = "apply" ]; then
+            git add content/glossary/
+            MSG="Glossary retag (apply): updated familiarity tags from proposal"
+          else
+            git add scripts/retag-proposal.json
+            MSG="Glossary retag (propose): familiarity recalibration proposal"
+          fi
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "$MSG"
+            git push
+          fi
