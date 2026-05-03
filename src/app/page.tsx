@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import SubscribeForm from "./_components/SubscribeForm";
 
 const YT_CHANNEL = "https://www.youtube.com/@the_new_builder";
 const LINKEDIN = "https://www.linkedin.com/in/brianhecht/";
@@ -257,14 +258,7 @@ export default function Home() {
           <h2 style={{ fontSize: "clamp(28px, 3.5vw, 38px)", fontWeight: 800, marginBottom: 10 }}>
             Stay in the loop
           </h2>
-          <iframe
-            src="https://thenewbuilder.substack.com/embed"
-            width="480"
-            height="320"
-            style={{ border: "1px solid #EEE", background: "white", display: "block" }}
-            frameBorder={0}
-            scrolling="no"
-          />
+          <SubscribeForm />
         </section>
 
         <hr style={{ border: "none", borderTop: "1px solid #e5e7eb", marginBottom: 64 }} />
