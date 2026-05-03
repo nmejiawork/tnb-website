@@ -1,5 +1,5 @@
 # HANDOFF — TNB Website (thenewbuilder.ai)
-*Last updated: May 3, 2026*
+*Last updated: May 3, 2026 (PM — native subscribe form)*
 
 ## Project Overview
 The New Builder homepage at thenewbuilder.ai. Public-facing website for the TNB brand. **LIVE as of April 15, 2026.** Now includes a full **Dynamic Glossary** at `/glossary` (shipped May 1-2): **287 AI/builder terms** with weekly auto-update via Anthropic-grounded GitHub Actions cron, three-tier familiarity classification (Beginner / Builder / Engineer), reader-feedback loop (Suggest a term), on-page autocomplete search, and full SEO structured data.
@@ -160,6 +160,15 @@ Auto-deploys from `brhecht/tnb-website` main via Vercel. No manual deploy steps 
 - None blocking. Open questions are all "Brian + future Claude session" things on his timeline (eyeball-pass on the corpus, ad-hoc term additions via manual queue, Anthropic credit top-up for topic-depth resumption).
 
 ## Session Log
+
+### May 3, 2026 (PM) — Replaced Substack iframe with native subscribe form
+- **What shipped:** Killed the `/embed` iframe in the "Stay in the loop" section. Replaced with a native, branded form (`src/app/_components/SubscribeForm.tsx`) that proxies through `/api/subscribe` (rewritten to POST `application/x-www-form-urlencoded` to `https://thenewbuilder.substack.com/api/v1/free`, the same open endpoint the embed widget uses — no API key needed). Form has email input + Subscribe button matching TNB style. Three states: idle / submitting / success / inline error. Success: "Almost there. Check your inbox to confirm." Footer: "Powered by Substack. Unsubscribe anytime."
+- **Why:** Brian reported the iframe was rendering as empty space on the live site. Two likely culprits: ad-blockers strip substack.com iframes; the default Substack embed is visually anemic (480x320 white box with 1px #EEE border on a white page reads as nothing). Native form sidesteps both.
+- **Backend wiring:** None required. Substack's free-tier subscribe API takes any email POST without auth. Same trick most legit sites using Substack use.
+- **Verified end-to-end:** local `next start` + curl. Valid email → 200 `{success:true}`; empty/malformed → 400; homepage HTML contains the new form.
+- **Files changed:** `src/app/api/subscribe/route.ts` (rewrote Beehiiv → Substack proxy), `src/app/_components/SubscribeForm.tsx` (new), `src/app/page.tsx` (replaced iframe block with `<SubscribeForm />`).
+- **Env vars cleaned up:** `BEEHIIV_API_KEY`, `BEEHIIV_PUBLICATION_ID` are now fully unused. Can be removed from Vercel project settings whenever convenient.
+- **Next:** Brian spot-checks live form on tnb.ai (visual + that confirmation email actually arrives).
 
 ### May 3, 2026 — Latest Episode: filter Shorts, show only long-form
 - **What shipped:** `src/app/api/latest-video/route.ts` — el RSS fetch tomaba el primer video sin filtrar (podía ser un Short). Fix: ahora itera todos los video IDs del feed y para cada uno verifica `youtube.com/shorts/{id}` con `redirect: 'follow'`. Si la URL final sigue siendo `/shorts/`, es un Short → skip. Si redirigió, es long form → se usa. Primer long-form encontrado se retorna.
