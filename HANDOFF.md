@@ -1,5 +1,5 @@
 # HANDOFF — TNB Website (thenewbuilder.ai)
-*Last updated: May 2, 2026 (post-retag + mobile + SEO pass)*
+*Last updated: May 3, 2026*
 
 ## Project Overview
 The New Builder homepage at thenewbuilder.ai. Public-facing website for the TNB brand. **LIVE as of April 15, 2026.** Now includes a full **Dynamic Glossary** at `/glossary` (shipped May 1-2): **287 AI/builder terms** with weekly auto-update via Anthropic-grounded GitHub Actions cron, three-tier familiarity classification (Beginner / Builder / Engineer), reader-feedback loop (Suggest a term), on-page autocomplete search, and full SEO structured data.
@@ -160,6 +160,13 @@ Auto-deploys from `brhecht/tnb-website` main via Vercel. No manual deploy steps 
 - None blocking. Open questions are all "Brian + future Claude session" things on his timeline (eyeball-pass on the corpus, ad-hoc term additions via manual queue, Anthropic credit top-up for topic-depth resumption).
 
 ## Session Log
+
+### May 3, 2026 — Latest Episode: filter Shorts, show only long-form
+- **What shipped:** `src/app/api/latest-video/route.ts` — el RSS fetch tomaba el primer video sin filtrar (podía ser un Short). Fix: ahora itera todos los video IDs del feed y para cada uno verifica `youtube.com/shorts/{id}` con `redirect: 'follow'`. Si la URL final sigue siendo `/shorts/`, es un Short → skip. Si redirigió, es long form → se usa. Primer long-form encontrado se retorna.
+- **Why:** Brian sube Shorts al canal `@the_new_builder`. El primer video del RSS podía ser un Short, que quedaría embebido en "Latest Episode" en la homepage.
+- **No changes to:** `page.tsx`, fallback video ID, cache time (still 1h).
+- **Pushed to:** `brhecht/tnb-website` main → auto-deploy Vercel en curso.
+- **Next:** Ninguno. Glossary cron en auto-pilot. War Room cards cuando esas páginas existan.
 
 ### May 2, 2026 (evening) — Mobile fixes + SEO structured data + final session wrap
 - **What shipped:**
