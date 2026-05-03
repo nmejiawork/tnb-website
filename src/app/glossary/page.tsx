@@ -3,16 +3,38 @@ import { getAllTerms, addedLabel } from "@/lib/glossary";
 import { TOPICS } from "@/types/glossary";
 import GlossaryControls from "./GlossaryControls";
 
+const INDEX_TITLE = "Glossary — The New Builder";
+const INDEX_DESC =
+  "Plain-English definitions of the terms builders are using right now. Updated weekly. AI-generated.";
+
 export const metadata: Metadata = {
-  title: "Glossary — The New Builder",
-  description:
-    "Plain-English definitions of the terms builders are using right now. Updated weekly. AI-generated.",
+  title: INDEX_TITLE,
+  description: INDEX_DESC,
+  keywords: [
+    "AI glossary",
+    "AI terms",
+    "AI definitions",
+    "agentic coding",
+    "RAG",
+    "MCP",
+    "AI agent",
+    "vibe coding",
+    "generative AI",
+    "LLM",
+    "AI builder",
+  ],
+  alternates: { canonical: "https://thenewbuilder.ai/glossary" },
   openGraph: {
-    title: "Glossary — The New Builder",
-    description:
-      "Plain-English definitions of the terms builders are using right now. Updated weekly. AI-generated.",
+    title: INDEX_TITLE,
+    description: INDEX_DESC,
     type: "website",
     url: "https://thenewbuilder.ai/glossary",
+    siteName: "The New Builder",
+  },
+  twitter: {
+    card: "summary",
+    title: INDEX_TITLE,
+    description: INDEX_DESC,
   },
 };
 
@@ -38,25 +60,73 @@ export default function GlossaryIndexPage() {
     ),
   }));
 
+  // Schema.org `DefinedTermSet` declares this page as the canonical glossary
+  // collection. `hasDefinedTerm` lists every term as a child DefinedTerm with
+  // its URL — Google can ingest the entire index in one structured pass.
+  // Helps surface sitelink-style results and richer SERP rendering.
+  const definedTermSetJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "@id": "https://thenewbuilder.ai/glossary",
+    name: "The New Builder Glossary",
+    description: INDEX_DESC,
+    url: "https://thenewbuilder.ai/glossary",
+    inLanguage: "en",
+    publisher: {
+      "@type": "Organization",
+      name: "The New Builder",
+      url: "https://thenewbuilder.ai",
+    },
+    hasDefinedTerm: terms.map((t) => ({
+      "@type": "DefinedTerm",
+      "@id": `https://thenewbuilder.ai/glossary/${t.slug}`,
+      name: t.term,
+      description: t.shortDef,
+      url: `https://thenewbuilder.ai/glossary/${t.slug}`,
+      termCode: t.slug,
+    })),
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://thenewbuilder.ai" },
+      { "@type": "ListItem", position: 2, name: "Glossary", item: "https://thenewbuilder.ai/glossary" },
+    ],
+  };
+
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      {/* Structured data — DefinedTermSet (the collection) + BreadcrumbList. */}
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(definedTermSetJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <main style={{ flex: 1, width: "100%", maxWidth: 1060, margin: "0 auto", padding: "48px 8% 64px" }}>
         {/* Nav */}
         <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 56 }}>
           <a href="/" style={{ fontSize: 18, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: "#000" }}>
             The New Builder
           </a>
-          <div className="nav-links" style={{ display: "flex", gap: 24 }}>
-            <a href="/glossary" style={{ fontSize: 14, fontWeight: 600, color: "#000" }}>
+          {/* Nav: full set on desktop. On mobile, keep Glossary, drop the rest
+              (still in footer). */}
+          <div className="nav-links" style={{ display: "flex", gap: 24, alignItems: "center" }}>
+            <a href="/glossary" className="nav-link-primary" style={{ fontSize: 14, fontWeight: 600, color: "#000" }}>
               Glossary
             </a>
-            <a href={YT_CHANNEL} target="_blank" rel="noopener noreferrer" className="nav-link-muted" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}>
+            <a href={YT_CHANNEL} target="_blank" rel="noopener noreferrer" className="nav-link-muted nav-link-secondary" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}>
               YouTube
             </a>
-            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="nav-link-muted" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}>
+            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="nav-link-muted nav-link-secondary" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}>
               LinkedIn
             </a>
-            <a href={CONTACT} className="nav-link-muted" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}>
+            <a href={CONTACT} className="nav-link-muted nav-link-secondary" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}>
               Contact
             </a>
           </div>
@@ -109,7 +179,7 @@ export default function GlossaryIndexPage() {
         .nav-link-muted:hover { color: #000 !important; }
         .footer-link:hover { color: #000 !important; }
         @media (max-width: 768px) {
-          .nav-links { display: none !important; }
+          .nav-link-secondary { display: none !important; }
           .footer-inner { flex-direction: column !important; gap: 12px !important; text-align: center !important; }
         }
         @media (max-width: 480px) {

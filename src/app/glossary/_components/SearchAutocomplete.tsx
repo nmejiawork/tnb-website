@@ -118,7 +118,7 @@ export default function SearchAutocomplete({
   }
 
   return (
-    <div ref={containerRef} style={{ position: "relative", width: widthPx, maxWidth: "100%", flexShrink: 0 }}>
+    <div ref={containerRef} className="g-search-autocomplete-wrap" style={{ position: "relative", width: widthPx, maxWidth: "100%", flexShrink: 0 }}>
       {SEARCH_ICON}
       <input
         type="text"

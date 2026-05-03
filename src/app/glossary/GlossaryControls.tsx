@@ -193,57 +193,64 @@ export default function GlossaryControls({ terms, topics }: Props) {
             }}
           />
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 7, flexShrink: 0, fontSize: 11.5 }}>
-          <span style={{ color: "#9ca3af" }}>Sort</span>
+        {/* Sort + Hide-expert grouped together. display: contents on desktop
+            (no wrapper effect — flex parent sees them as direct children).
+            On mobile a media query flips to display: flex so they sit on one
+            row beneath the search input instead of stacking individually. */}
+        <div className="g-secondary-controls" style={{ display: "contents" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 7, flexShrink: 0, fontSize: 11.5 }}>
+            <span style={{ color: "#9ca3af" }}>Sort</span>
+            <button
+              type="button"
+              onClick={() => setSortBy("recency")}
+              className="g-sort-link"
+              data-active={sortBy === "recency"}
+              style={{ background: "none", border: "none", padding: "2px 4px", borderRadius: 3, cursor: "pointer", fontFamily: "inherit", fontSize: 11.5, color: sortBy === "recency" ? "#000" : "#6b7280", fontWeight: sortBy === "recency" ? 600 : 400 }}
+            >
+              Recency
+            </button>
+            <span style={{ color: "#d1d5db" }}>·</span>
+            <button
+              type="button"
+              onClick={() => setSortBy("alpha")}
+              className="g-sort-link"
+              data-active={sortBy === "alpha"}
+              style={{ background: "none", border: "none", padding: "2px 4px", borderRadius: 3, cursor: "pointer", fontFamily: "inherit", fontSize: 11.5, color: sortBy === "alpha" ? "#000" : "#6b7280", fontWeight: sortBy === "alpha" ? 600 : 400 }}
+            >
+              A–Z
+            </button>
+          </div>
+          {/* Hide expert-only toggle pill — matches sort/topic chip aesthetic.
+              State persists via localStorage; URL mirrors as ?level=intro for
+              shareable links. Filter affects browse only — search remains
+              universal. */}
           <button
             type="button"
-            onClick={() => setSortBy("recency")}
-            className="g-sort-link"
-            data-active={sortBy === "recency"}
-            style={{ background: "none", border: "none", padding: "2px 4px", borderRadius: 3, cursor: "pointer", fontFamily: "inherit", fontSize: 11.5, color: sortBy === "recency" ? "#000" : "#6b7280", fontWeight: sortBy === "recency" ? 600 : 400 }}
+            onClick={() => setHideExpert((v) => !v)}
+            className="g-chip"
+            data-active={hideExpert}
+            aria-pressed={hideExpert}
+            title={`Hides ${expertHiddenCount} builder + engineer-tier terms from browse. Search still finds everything.`}
+            style={{
+              fontSize: 11,
+              padding: "3px 9px",
+              border: "0.5px solid",
+              borderColor: hideExpert ? "#000" : "#d1d5db",
+              borderRadius: 12,
+              cursor: "pointer",
+              background: hideExpert ? "#000" : "#fff",
+              color: hideExpert ? "#fff" : "#6b7280",
+              whiteSpace: "nowrap",
+              lineHeight: 1.4,
+              userSelect: "none",
+              fontFamily: "inherit",
+              flexShrink: 0,
+            }}
           >
-            Recency
-          </button>
-          <span style={{ color: "#d1d5db" }}>·</span>
-          <button
-            type="button"
-            onClick={() => setSortBy("alpha")}
-            className="g-sort-link"
-            data-active={sortBy === "alpha"}
-            style={{ background: "none", border: "none", padding: "2px 4px", borderRadius: 3, cursor: "pointer", fontFamily: "inherit", fontSize: 11.5, color: sortBy === "alpha" ? "#000" : "#6b7280", fontWeight: sortBy === "alpha" ? 600 : 400 }}
-          >
-            A–Z
+            {hideExpert ? "✓ " : ""}Hide expert-only
           </button>
         </div>
-        {/* Hide expert-only toggle pill — matches sort/topic chip aesthetic.
-            Filters out Specialist-tier (engineer-only) terms. State persists via
-            localStorage; URL mirrors as ?level=intro for shareable links. */}
-        <button
-          type="button"
-          onClick={() => setHideExpert((v) => !v)}
-          className="g-chip"
-          data-active={hideExpert}
-          aria-pressed={hideExpert}
-          title={`Hides ${expertHiddenCount} builder + engineer-tier terms from browse. Search still finds everything.`}
-          style={{
-            fontSize: 11,
-            padding: "3px 9px",
-            border: "0.5px solid",
-            borderColor: hideExpert ? "#000" : "#d1d5db",
-            borderRadius: 12,
-            cursor: "pointer",
-            background: hideExpert ? "#000" : "#fff",
-            color: hideExpert ? "#fff" : "#6b7280",
-            whiteSpace: "nowrap",
-            lineHeight: 1.4,
-            userSelect: "none",
-            fontFamily: "inherit",
-            flexShrink: 0,
-          }}
-        >
-          {hideExpert ? "✓ " : ""}Hide expert-only
-        </button>
-        <div style={{ flex: "1 1 0", minWidth: 0 }} />
+        <div className="g-search-row-spacer" style={{ flex: "1 1 0", minWidth: 0 }} />
         <SuggestPanel />
       </div>
 
@@ -360,8 +367,15 @@ export default function GlossaryControls({ terms, topics }: Props) {
         .g-chip:hover[data-active="false"] { border-color: #9ca3af !important; color: #000 !important; }
         .g-sort-link:hover { color: #000 !important; }
         @media (max-width: 600px) {
-          .g-search-row { flex-direction: column !important; align-items: stretch !important; gap: 10px !important; }
+          /* Mobile controls: 3 stacked rows.
+             Row 1: search input full-width.
+             Row 2: sort + hide-expert pill grouped.
+             Row 3: Suggest a term button.
+             The flex spacer is hidden — it has no purpose in column flow. */
+          .g-search-row { flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; }
           .g-search-row > div:first-child { width: 100% !important; }
+          .g-search-row-spacer { display: none !important; }
+          .g-secondary-controls { display: flex !important; align-items: center !important; gap: 12px !important; flex-wrap: wrap !important; }
           .g-filter-row { flex-wrap: nowrap !important; overflow-x: auto !important; padding-bottom: 4px !important; }
           .g-grid { grid-template-columns: 1fr !important; }
         }

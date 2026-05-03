@@ -102,23 +102,25 @@ export default function Home() {
           <span style={{ fontSize: 18, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" }}>
             The New Builder
           </span>
-          <div className="nav-links" style={{ display: "flex", gap: 24 }}>
-            <a href="/glossary" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}
+          {/* Nav: full set on desktop, just Glossary on mobile (other links
+              remain reachable via the footer). */}
+          <div className="nav-links" style={{ display: "flex", gap: 24, alignItems: "center" }}>
+            <a href="/glossary" className="nav-link-primary" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}
                onMouseEnter={e => (e.currentTarget.style.color = "#000")}
                onMouseLeave={e => (e.currentTarget.style.color = "#9ca3af")}>
               Glossary
             </a>
-            <a href={YT_CHANNEL} target="_blank" rel="noopener noreferrer" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}
+            <a href={YT_CHANNEL} target="_blank" rel="noopener noreferrer" className="nav-link-secondary" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}
                onMouseEnter={e => (e.currentTarget.style.color = "#000")}
                onMouseLeave={e => (e.currentTarget.style.color = "#9ca3af")}>
               YouTube
             </a>
-            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}
+            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="nav-link-secondary" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}
                onMouseEnter={e => (e.currentTarget.style.color = "#000")}
                onMouseLeave={e => (e.currentTarget.style.color = "#9ca3af")}>
               LinkedIn
             </a>
-            <a href={CONTACT} style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}
+            <a href={CONTACT} className="nav-link-secondary" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}
                onMouseEnter={e => (e.currentTarget.style.color = "#000")}
                onMouseLeave={e => (e.currentTarget.style.color = "#9ca3af")}>
               Contact
@@ -323,7 +325,9 @@ export default function Home() {
           flex-shrink: 0;
         }
         @media (max-width: 768px) {
-          .nav-links { display: none !important; }
+          /* Hide secondary links on mobile but keep Glossary visible — main nav
+             targets are footer-redundant; Glossary is the unique discovery hop. */
+          .nav-link-secondary { display: none !important; }
           .hero-section { grid-template-columns: 1fr !important; gap: 32px !important; }
           .hero-section > div:first-child { justify-content: center !important; }
           #brian-photo { width: 280px !important; height: 280px !important; }

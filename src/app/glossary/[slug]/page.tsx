@@ -26,7 +26,15 @@ export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
 }
 
-/** Per-term metadata for clean Slack/newsletter unfurls. */
+/**
+ * Per-term metadata for clean Slack/newsletter unfurls AND search engines.
+ *
+ * Includes: title, description, canonical URL, OG (article type with
+ * published/modified time), Twitter card, keywords (from aliases). The
+ * structured-data JSON-LD that completes the picture is rendered inline in
+ * the page body as a <script type="application/ld+json"> block — Next.js
+ * Metadata API doesn't expose JSON-LD directly.
+ */
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const term = getTermBySlug(slug);
@@ -36,14 +44,34 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description = term.shortDef.length > 160
     ? term.shortDef.slice(0, 157) + "..."
     : term.shortDef;
+  const url = `https://thenewbuilder.ai/glossary/${term.slug}`;
+  const title = `${term.term} — The New Builder Glossary`;
+  // Keywords drawn from the term itself + aliases. Modern search engines
+  // largely ignore keywords meta but it's a free signal for some crawlers,
+  // and harmless when grounded in the actual content.
+  const keywords = [term.term, ...term.aliases, term.topic, "AI glossary", "AI definition"]
+    .filter(Boolean);
+  const dateAddedISO = `${term.dateAdded}T00:00:00.000Z`;
   return {
-    title: `${term.term} — The New Builder Glossary`,
+    title,
     description,
+    keywords,
+    alternates: { canonical: url },
     openGraph: {
-      title: `${term.term} — The New Builder Glossary`,
+      title,
       description,
       type: "article",
-      url: `https://thenewbuilder.ai/glossary/${term.slug}`,
+      url,
+      siteName: "The New Builder",
+      publishedTime: dateAddedISO,
+      modifiedTime: dateAddedISO,
+      authors: ["The New Builder"],
+      tags: [term.topic, term.type, ...term.aliases].filter(Boolean),
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
     },
   };
 }
@@ -63,25 +91,83 @@ export default async function GlossaryTermPage({ params }: PageProps) {
     aliases: t.aliases,
   }));
 
+  const url = `https://thenewbuilder.ai/glossary/${term.slug}`;
+  // Schema.org `DefinedTerm` is the canonical structured-data type for
+  // glossary entries. Surfaces this page as a definition in Google search,
+  // makes it eligible for rich-result rendering, and lets Knowledge Graph
+  // ingest the term + definition cleanly. `inDefinedTermSet` ties it back
+  // to the parent set (the index page) for collection-style results.
+  // `BreadcrumbList` adds Home › Glossary › Term Name to SERP listings.
+  const definedTermJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    "@id": url,
+    name: term.term,
+    description: term.shortDef,
+    url,
+    termCode: term.slug,
+    inDefinedTermSet: {
+      "@type": "DefinedTermSet",
+      "@id": "https://thenewbuilder.ai/glossary",
+      name: "The New Builder Glossary",
+      url: "https://thenewbuilder.ai/glossary",
+    },
+    ...(term.aliases.length > 0 ? { alternateName: term.aliases } : {}),
+    ...(related.length > 0
+      ? {
+          isRelatedTo: related.map((r) => ({
+            "@type": "DefinedTerm",
+            "@id": `https://thenewbuilder.ai/glossary/${r.slug}`,
+            name: r.term,
+            url: `https://thenewbuilder.ai/glossary/${r.slug}`,
+          })),
+        }
+      : {}),
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://thenewbuilder.ai" },
+      { "@type": "ListItem", position: 2, name: "Glossary", item: "https://thenewbuilder.ai/glossary" },
+      { "@type": "ListItem", position: 3, name: term.term, item: url },
+    ],
+  };
+
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      {/* Structured data — placed before <main> so it's parsed early. Two blocks:
+          DefinedTerm (this page IS a definition) + BreadcrumbList (nav crumbs
+          in SERP). Both keyed off `term.slug` so static SSG keeps them stable. */}
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(definedTermJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <main style={{ flex: 1, width: "100%", maxWidth: 1060, margin: "0 auto", padding: "48px 8% 64px" }}>
         {/* Nav */}
         <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 56 }}>
           <a href="/" style={{ fontSize: 18, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: "#000" }}>
             The New Builder
           </a>
-          <div className="nav-links" style={{ display: "flex", gap: 24 }}>
-            <a href="/glossary" style={{ fontSize: 14, fontWeight: 600, color: "#000" }}>
+          {/* Nav: full set on desktop. On mobile, only Glossary remains visible.
+              YouTube/LinkedIn/Contact stay reachable via the footer. */}
+          <div className="nav-links" style={{ display: "flex", gap: 24, alignItems: "center" }}>
+            <a href="/glossary" className="nav-link-primary" style={{ fontSize: 14, fontWeight: 600, color: "#000" }}>
               Glossary
             </a>
-            <a href={YT_CHANNEL} target="_blank" rel="noopener noreferrer" className="nav-link-muted" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}>
+            <a href={YT_CHANNEL} target="_blank" rel="noopener noreferrer" className="nav-link-muted nav-link-secondary" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}>
               YouTube
             </a>
-            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="nav-link-muted" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}>
+            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="nav-link-muted nav-link-secondary" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}>
               LinkedIn
             </a>
-            <a href={CONTACT} className="nav-link-muted" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}>
+            <a href={CONTACT} className="nav-link-muted nav-link-secondary" style={{ fontSize: 14, fontWeight: 500, color: "#9ca3af" }}>
               Contact
             </a>
           </div>
@@ -89,8 +175,9 @@ export default async function GlossaryTermPage({ params }: PageProps) {
 
         {/* Article controls — section-level interactions visible from every per-term page.
             Outside the 720px article max-width so the Suggest form (when open) can use the
-            full content column when revealed. flexWrap allows the form to break to its own row. */}
-        <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 22, flexWrap: "wrap" }}>
+            full content column when revealed. flexWrap allows the form to break to its own row.
+            Mobile (<600px): stack into [back-link] / [search full-width] / [suggest]. */}
+        <div className="g-article-controls" style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 22, flexWrap: "wrap" }}>
           <Link
             href="/glossary"
             className="g-back-top"
@@ -99,7 +186,7 @@ export default async function GlossaryTermPage({ params }: PageProps) {
             ← Back to glossary
           </Link>
           <SearchAutocomplete terms={searchTerms} widthPx={240} />
-          <div style={{ flex: "1 1 0", minWidth: 0 }} />
+          <div className="g-article-controls-spacer" style={{ flex: "1 1 0", minWidth: 0 }} />
           <SuggestPanel />
         </div>
 
@@ -224,8 +311,17 @@ export default async function GlossaryTermPage({ params }: PageProps) {
         .nav-link-muted:hover { color: #000 !important; }
         .footer-link:hover { color: #000 !important; }
         @media (max-width: 768px) {
-          .nav-links { display: none !important; }
+          /* Mobile nav: keep Glossary visible, hide secondary links (footer
+             still has them). */
+          .nav-link-secondary { display: none !important; }
           .footer-inner { flex-direction: column !important; gap: 12px !important; text-align: center !important; }
+        }
+        @media (max-width: 600px) {
+          /* Mobile article controls: stack [back] / [search full-width] / [suggest]. */
+          .g-article-controls { flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; }
+          .g-article-controls > a:first-child { /* back link sits content-width left */ }
+          .g-article-controls .g-search-autocomplete-wrap { width: 100% !important; }
+          .g-article-controls-spacer { display: none !important; }
         }
         @media (max-width: 480px) {
           main { padding: 32px 6% 48px !important; }
