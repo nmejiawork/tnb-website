@@ -56,9 +56,9 @@ Created April 15, 2026 to separate the TNB website from `hc-website`. Previously
 Weekly cron is on auto-pilot — fires Mondays 13:00 UTC. Multi-vector discovery (source-scan + targeted-search + adversarial-audit + manual-queue check). Failure pings Brain Inbox `/api/handoff-notify` (recipient: nico).
 
 Pending:
-1. Add Beehiiv env vars in Vercel (legacy `/api/subscribe` returns error without them): `BEEHIIV_API_KEY`, `BEEHIIV_PUBLICATION_ID`. Subscribe form on the live site now uses a Substack iframe and is unaffected — these are only for the legacy API route.
-2. **Anthropic API key rotation pending.** Brian exposed the key value in chat during initial setup. Recommended: console.anthropic.com → revoke + regenerate → update `ANTHROPIC_API_KEY` in `brhecht/tnb-website` GitHub Secrets + Vercel env vars on hc-funnel and builder-bot (which share the same key).
-3. War Room / Meetups / Curated Events homepage cards remain non-clickable until those pages exist.
+1. War Room / Meetups / Curated Events homepage cards remain non-clickable until those pages exist.
+
+(Beehiiv env vars no longer pending — fully migrated to Substack. Anthropic API key rotation is owned by Brian directly; do not raise as a recurring item in future sessions.)
 
 ## Glossary Cron Modes (workflow_dispatch)
 
