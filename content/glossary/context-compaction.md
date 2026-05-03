@@ -3,7 +3,7 @@ slug: context-compaction
 term: Context compaction
 type: Concept
 topic: Patterns & Practices
-familiarity: Specialist
+familiarity: Emerging
 aliases:
   - context compression
   - adaptive context compaction

@@ -3,7 +3,7 @@ slug: deep-research
 term: Deep Research
 type: Concept
 topic: Agents & Automation
-familiarity: Emerging
+familiarity: Common
 aliases:
   - autonomous research agent
   - research agent

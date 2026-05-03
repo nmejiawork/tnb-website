@@ -3,7 +3,7 @@ slug: notebooklm-audio-overview
 term: Audio Overview
 type: Concept
 topic: Builder Tools
-familiarity: Emerging
+familiarity: Common
 aliases:
   - NotebookLM Audio Overview
   - AI podcast

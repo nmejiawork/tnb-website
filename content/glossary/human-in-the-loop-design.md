@@ -3,7 +3,7 @@ slug: human-in-the-loop-design
 term: Human-in-the-loop design
 type: Concept
 topic: Patterns & Practices
-familiarity: Common
+familiarity: Emerging
 aliases:
   - HITL
   - human oversight

@@ -3,7 +3,7 @@ slug: openai-responses-api
 term: Responses API
 type: Tool
 topic: Infrastructure
-familiarity: Emerging
+familiarity: Specialist
 aliases:
   - OpenAI Responses API
 related:

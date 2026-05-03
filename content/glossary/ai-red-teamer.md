@@ -3,7 +3,7 @@ slug: ai-red-teamer
 term: AI Red Teamer
 type: Role
 topic: Roles & Org
-familiarity: Specialist
+familiarity: Emerging
 aliases:
   - red teamer
   - AI safety red teamer

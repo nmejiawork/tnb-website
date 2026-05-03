@@ -59,16 +59,16 @@ export default function GlossaryControls({ terms, topics }: Props) {
   const [activeTopic, setActiveTopic] = useState<Topic | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState<SortBy>("recency");
-  // hideExpert filters out Specialist-tier terms (engineer-only deep cuts:
-  // kv-cache, mechanistic-interpretability, dpo, etc.). Common + Emerging stay.
-  // Off by default — corpus is the product; opt-in to hide.
+  // hideExpert filters the BROWSE grid down to Common/Beginner-tier terms only
+  // (Emerging + Specialist hidden). Search is unaffected — universal regardless
+  // of toggle state. Off by default — full corpus is the product; opt-in to hide.
   const [hideExpert, setHideExpert] = useState(false);
 
-  // How many terms would be hidden if the toggle were on — used in label so
-  // the user knows the magnitude before flipping it. Computed once on mount,
-  // independent of other filters (it's a corpus-level fact, not a filter-state fact).
-  const specialistCount = useMemo(
-    () => terms.filter((t) => t.familiarity === "Specialist").length,
+  // How many terms would be hidden in browse mode when the toggle is on —
+  // used in label/tooltip so the reader knows the magnitude before flipping it.
+  // Corpus-level fact, independent of other filter state.
+  const expertHiddenCount = useMemo(
+    () => terms.filter((t) => t.familiarity !== "Common").length,
     [terms],
   );
 
@@ -129,11 +129,19 @@ export default function GlossaryControls({ terms, topics }: Props) {
     }
   }, [hideExpert]);
 
+  const isSearching = searchQuery.trim().length > 0;
+
   const filtered = useMemo(() => {
     let out = terms;
-    if (hideExpert) out = out.filter((t) => t.familiarity !== "Specialist");
+    // Search is universal — when the user is actively searching, hideExpert
+    // does NOT apply. The whole point of a glossary is that you can look up
+    // any term you encountered in the wild, even an "engineer" one. The
+    // hideExpert toggle only governs the default browse surface.
+    if (hideExpert && !isSearching) {
+      out = out.filter((t) => t.familiarity === "Common");
+    }
     if (activeTopic) out = out.filter((t) => t.topic === activeTopic);
-    if (searchQuery.trim()) {
+    if (isSearching) {
       const q = searchQuery.trim().toLowerCase();
       out = out.filter(
         (t) =>
@@ -148,7 +156,7 @@ export default function GlossaryControls({ terms, topics }: Props) {
       sorted.sort((a, b) => a.term.localeCompare(b.term));
     }
     return sorted;
-  }, [terms, activeTopic, searchQuery, sortBy, hideExpert]);
+  }, [terms, activeTopic, searchQuery, sortBy, hideExpert, isSearching]);
 
   const hasActiveFilter = activeTopic !== null || searchQuery.length > 0;
   const clearAll = useCallback(() => {
@@ -216,7 +224,7 @@ export default function GlossaryControls({ terms, topics }: Props) {
           className="g-chip"
           data-active={hideExpert}
           aria-pressed={hideExpert}
-          title={`${specialistCount} terms tagged as engineer-only deep cuts (e.g. KV cache, mechanistic interpretability, DPO).`}
+          title={`Hides ${expertHiddenCount} builder + engineer-tier terms from browse. Search still finds everything.`}
           style={{
             fontSize: 11,
             padding: "3px 9px",
@@ -287,8 +295,11 @@ export default function GlossaryControls({ terms, topics }: Props) {
           reader can self-assess whether they're missing something. */}
       <div style={{ fontSize: 11, color: "#9ca3af", marginBottom: 16 }}>
         {filtered.length} {filtered.length === 1 ? "term" : "terms"}
-        {hideExpert && specialistCount > 0 && (
-          <span> · {specialistCount} expert-only hidden</span>
+        {hideExpert && !isSearching && expertHiddenCount > 0 && (
+          <span> · {expertHiddenCount} expert hidden in browse</span>
+        )}
+        {hideExpert && isSearching && (
+          <span> · searching all {terms.length} terms</span>
         )}
       </div>
 

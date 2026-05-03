@@ -3,7 +3,7 @@ slug: ai-services-firm
 term: AI services firm
 type: Concept
 topic: Business Models
-familiarity: Emerging
+familiarity: Common
 aliases:
   - AI consultancy
   - AI implementation firm

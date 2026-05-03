@@ -3,7 +3,7 @@ slug: data-moat
 term: Data moat
 type: Concept
 topic: Business Models
-familiarity: Emerging
+familiarity: Common
 aliases:
   - data advantage
   - proprietary data

@@ -3,7 +3,7 @@ slug: inference-cost
 term: Inference cost
 type: Concept
 topic: Business Models
-familiarity: Emerging
+familiarity: Common
 aliases:
   - inference economics
   - AI COGS

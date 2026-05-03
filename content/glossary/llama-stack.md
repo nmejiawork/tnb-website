@@ -3,7 +3,7 @@ slug: llama-stack
 term: Llama Stack
 type: Tool
 topic: Infrastructure
-familiarity: Emerging
+familiarity: Specialist
 aliases:
   - Meta Llama Stack
 related:

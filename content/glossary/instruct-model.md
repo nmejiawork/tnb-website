@@ -3,7 +3,7 @@ slug: instruct-model
 term: Instruct model
 type: Concept
 topic: AI Models & Capabilities
-familiarity: Common
+familiarity: Emerging
 aliases:
   - instruction-tuned model
   - chat model

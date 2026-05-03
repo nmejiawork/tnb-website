@@ -3,7 +3,7 @@ slug: model-layer-vs-app-layer
 term: Model layer vs. app layer
 type: Concept
 topic: Business Models
-familiarity: Emerging
+familiarity: Common
 aliases:
   - foundation layer vs application layer
   - infrastructure vs app

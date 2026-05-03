@@ -3,7 +3,7 @@ slug: vertical-ai
 term: Vertical AI
 type: Concept
 topic: Business Models
-familiarity: Emerging
+familiarity: Common
 aliases:
   - vertical AI SaaS
   - domain-specific AI

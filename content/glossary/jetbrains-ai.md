@@ -3,7 +3,7 @@ slug: jetbrains-ai
 term: JetBrains AI
 type: Tool
 topic: Builder Tools
-familiarity: Common
+familiarity: Emerging
 aliases:
   - JetBrains AI Assistant
   - IntelliJ AI

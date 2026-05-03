@@ -3,7 +3,7 @@ slug: google-gems
 term: Gems
 type: Concept
 topic: Builder Tools
-familiarity: Emerging
+familiarity: Common
 aliases:
   - Google Gems
   - Gemini Gems

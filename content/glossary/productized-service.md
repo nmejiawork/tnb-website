@@ -3,7 +3,7 @@ slug: productized-service
 term: Productized service
 type: Concept
 topic: Business Models
-familiarity: Emerging
+familiarity: Common
 aliases:
   - productized AI service
   - packaged service

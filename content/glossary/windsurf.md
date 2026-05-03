@@ -3,7 +3,7 @@ slug: windsurf
 term: Windsurf
 type: Tool
 topic: Builder Tools
-familiarity: Emerging
+familiarity: Common
 aliases:
   - windsurf ide
   - codeium windsurf

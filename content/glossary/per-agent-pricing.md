@@ -3,7 +3,7 @@ slug: per-agent-pricing
 term: Per-agent pricing
 type: Concept
 topic: Business Models
-familiarity: Emerging
+familiarity: Common
 aliases:
   - agent-based pricing
   - per-AI-agent fee

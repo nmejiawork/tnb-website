@@ -3,7 +3,7 @@ slug: task-decomposition
 term: Task decomposition
 type: Concept
 topic: Patterns & Practices
-familiarity: Common
+familiarity: Emerging
 aliases:
   - problem decomposition
   - sub-task planning

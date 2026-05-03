@@ -3,7 +3,7 @@ slug: mcp-server
 term: MCP server
 type: Concept
 topic: Agents & Automation
-familiarity: Emerging
+familiarity: Common
 aliases:
   - mcp tool server
   - model context protocol server

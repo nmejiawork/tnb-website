@@ -3,7 +3,7 @@ slug: amazon-q-developer
 term: Amazon Q Developer
 type: Tool
 topic: Builder Tools
-familiarity: Common
+familiarity: Emerging
 aliases:
   - Amazon Q
   - CodeWhisperer

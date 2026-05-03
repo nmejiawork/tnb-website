@@ -3,7 +3,7 @@ slug: project-mariner
 term: Project Mariner
 type: Concept
 topic: Agents & Automation
-familiarity: Emerging
+familiarity: Common
 aliases:
   - Google Project Mariner
   - Mariner

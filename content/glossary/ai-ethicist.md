@@ -3,7 +3,7 @@ slug: ai-ethicist
 term: AI ethicist
 type: Role
 topic: Roles & Org
-familiarity: Specialist
+familiarity: Emerging
 aliases:
   - AI ethics officer
   - responsible AI specialist

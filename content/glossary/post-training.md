@@ -3,7 +3,7 @@ slug: post-training
 term: Post-training
 type: Concept
 topic: AI Models & Capabilities
-familiarity: Emerging
+familiarity: Specialist
 aliases:
   - post-training pipeline
   - alignment training

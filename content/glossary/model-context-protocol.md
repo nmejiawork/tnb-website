@@ -3,7 +3,7 @@ slug: model-context-protocol
 term: Model Context Protocol
 type: Concept
 topic: Infrastructure
-familiarity: Emerging
+familiarity: Common
 aliases:
   - MCP
   - MCP protocol

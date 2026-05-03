@@ -3,7 +3,7 @@ slug: local-model
 term: Local model
 type: Concept
 topic: AI Models & Capabilities
-familiarity: Emerging
+familiarity: Common
 aliases:
   - on-device model
   - edge model

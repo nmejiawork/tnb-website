@@ -3,7 +3,7 @@ slug: evals
 term: Evals
 type: Concept
 topic: Patterns & Practices
-familiarity: Emerging
+familiarity: Common
 aliases:
   - evaluations
   - AI evaluation

@@ -3,7 +3,7 @@ slug: ai-research-scientist
 term: AI research scientist
 type: Role
 topic: Roles & Org
-familiarity: Specialist
+familiarity: Emerging
 aliases:
   - ML research scientist
   - research scientist

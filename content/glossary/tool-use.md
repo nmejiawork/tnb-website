@@ -3,7 +3,7 @@ slug: tool-use
 term: Tool use
 type: Concept
 topic: Agents & Automation
-familiarity: Emerging
+familiarity: Common
 aliases:
   - function calling
   - tool calling

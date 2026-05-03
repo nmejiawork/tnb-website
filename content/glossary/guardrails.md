@@ -3,7 +3,7 @@ slug: guardrails
 term: Guardrails
 type: Concept
 topic: Agents & Automation
-familiarity: Emerging
+familiarity: Common
 aliases:
   - AI guardrails
   - safety rails

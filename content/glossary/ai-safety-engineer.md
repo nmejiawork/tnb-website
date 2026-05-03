@@ -3,7 +3,7 @@ slug: ai-safety-engineer
 term: AI safety engineer
 type: Role
 topic: Roles & Org
-familiarity: Specialist
+familiarity: Emerging
 aliases:
   - alignment engineer
   - AI alignment researcher

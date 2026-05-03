@@ -3,7 +3,7 @@ slug: model-serving
 term: Model serving
 type: Concept
 topic: Infrastructure
-familiarity: Common
+familiarity: Emerging
 aliases:
   - LLM serving
   - inference serving

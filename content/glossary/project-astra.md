@@ -3,7 +3,7 @@ slug: project-astra
 term: Project Astra
 type: Concept
 topic: Agents & Automation
-familiarity: Emerging
+familiarity: Common
 aliases:
   - Google Project Astra
   - Astra

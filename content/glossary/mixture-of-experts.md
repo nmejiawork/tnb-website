@@ -3,7 +3,7 @@ slug: mixture-of-experts
 term: Mixture of Experts
 type: Concept
 topic: AI Models & Capabilities
-familiarity: Emerging
+familiarity: Specialist
 aliases:
   - MoE
   - sparse MoE

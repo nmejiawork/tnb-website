@@ -3,7 +3,7 @@ slug: opentelemetry-for-ai
 term: OpenTelemetry for AI
 type: Concept
 topic: Infrastructure
-familiarity: Emerging
+familiarity: Specialist
 aliases:
   - OTel GenAI
   - OpenTelemetry GenAI

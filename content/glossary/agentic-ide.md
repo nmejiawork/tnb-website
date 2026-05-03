@@ -3,7 +3,7 @@ slug: agentic-ide
 term: Agentic IDE
 type: Concept
 topic: Builder Tools
-familiarity: Emerging
+familiarity: Common
 aliases:
   - ai-native ide
   - ai ide

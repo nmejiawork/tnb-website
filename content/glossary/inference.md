@@ -3,7 +3,7 @@ slug: inference
 term: Inference
 type: Concept
 topic: AI Models & Capabilities
-familiarity: Common
+familiarity: Emerging
 aliases:
   - model inference
   - LLM inference

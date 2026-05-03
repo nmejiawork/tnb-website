@@ -3,7 +3,7 @@ slug: lovable
 term: Lovable
 type: Tool
 topic: Builder Tools
-familiarity: Emerging
+familiarity: Common
 aliases:
   - lovable.dev
 related:

@@ -3,7 +3,7 @@ slug: base-model
 term: Base model
 type: Concept
 topic: AI Models & Capabilities
-familiarity: Common
+familiarity: Emerging
 aliases:
   - pretrained base model
   - foundation LLM

@@ -3,7 +3,7 @@ slug: function-calling
 term: Function Calling
 type: Concept
 topic: Patterns & Practices
-familiarity: Common
+familiarity: Emerging
 aliases:
   - tool calling
   - function use

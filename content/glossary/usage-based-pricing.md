@@ -3,7 +3,7 @@ slug: usage-based-pricing
 term: Usage-based pricing
 type: Concept
 topic: Business Models
-familiarity: Emerging
+familiarity: Common
 aliases:
   - consumption-based pricing
   - per-token pricing

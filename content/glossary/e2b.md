@@ -3,7 +3,7 @@ slug: e2b
 term: E2B
 type: Tool
 topic: Builder Tools
-familiarity: Specialist
+familiarity: Emerging
 aliases:
   - e2b.dev
   - E2B Sandbox

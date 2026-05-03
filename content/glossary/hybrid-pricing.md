@@ -3,7 +3,7 @@ slug: hybrid-pricing
 term: Hybrid pricing
 type: Concept
 topic: Business Models
-familiarity: Emerging
+familiarity: Common
 aliases:
   - base plus usage
   - subscription plus consumption

@@ -3,7 +3,7 @@ slug: ai-cogs
 term: AI COGS
 type: Concept
 topic: Business Models
-familiarity: Specialist
+familiarity: Common
 aliases:
   - cost of goods sold AI
   - AI gross margin

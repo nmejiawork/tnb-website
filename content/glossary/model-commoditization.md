@@ -3,7 +3,7 @@ slug: model-commoditization
 term: Model commoditization
 type: Concept
 topic: Business Models
-familiarity: Emerging
+familiarity: Common
 aliases:
   - AI model commodification
   - commoditized AI

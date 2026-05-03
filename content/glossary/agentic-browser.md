@@ -3,7 +3,7 @@ slug: agentic-browser
 term: Agentic browser
 type: Concept
 topic: Agents & Automation
-familiarity: Emerging
+familiarity: Common
 aliases:
   - AI browser
   - autonomous browser

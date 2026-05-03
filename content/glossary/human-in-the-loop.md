@@ -3,7 +3,7 @@ slug: human-in-the-loop
 term: Human-in-the-loop
 type: Concept
 topic: Agents & Automation
-familiarity: Emerging
+familiarity: Common
 aliases:
   - HITL
   - human oversight

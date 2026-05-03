@@ -3,7 +3,7 @@ slug: agent-state
 term: Agent state
 type: Concept
 topic: Agents & Automation
-familiarity: Common
+familiarity: Emerging
 aliases:
   - agent context state
   - workflow state

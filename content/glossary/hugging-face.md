@@ -3,7 +3,7 @@ slug: hugging-face
 term: Hugging Face
 type: Tool
 topic: Infrastructure
-familiarity: Common
+familiarity: Emerging
 aliases:
   - HF
   - HuggingFace

@@ -3,7 +3,7 @@ slug: openai-compatible-api
 term: OpenAI-compatible API
 type: Concept
 topic: Infrastructure
-familiarity: Common
+familiarity: Specialist
 aliases:
   - OpenAI API compatibility
   - OpenAI-compatible endpoint

@@ -3,7 +3,7 @@ slug: google-ai-studio
 term: Google AI Studio
 type: Tool
 topic: Builder Tools
-familiarity: Common
+familiarity: Emerging
 aliases:
   - AI Studio
   - Google AI Studio IDE

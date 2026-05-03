@@ -3,7 +3,7 @@ slug: veo
 term: Veo
 type: Tool
 topic: AI Models & Capabilities
-familiarity: Emerging
+familiarity: Common
 aliases:
   - Veo 3
   - Veo 2

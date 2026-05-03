@@ -3,7 +3,7 @@ slug: react-prompting
 term: ReAct prompting
 type: Concept
 topic: Patterns & Practices
-familiarity: Emerging
+familiarity: Specialist
 aliases:
   - ReAct
   - Reasoning and Acting

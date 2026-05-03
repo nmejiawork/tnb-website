@@ -3,7 +3,7 @@ slug: eu-ai-act
 term: EU AI Act
 type: Concept
 topic: Patterns & Practices
-familiarity: Emerging
+familiarity: Common
 aliases:
   - eu artificial intelligence act
   - ai act

@@ -3,7 +3,7 @@ slug: mcp
 term: MCP
 type: Concept
 topic: Agents & Automation
-familiarity: Emerging
+familiarity: Common
 aliases:
   - Model Context Protocol
   - model context protocol

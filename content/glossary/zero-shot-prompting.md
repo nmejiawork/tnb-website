@@ -3,7 +3,7 @@ slug: zero-shot-prompting
 term: Zero-shot prompting
 type: Concept
 topic: Patterns & Practices
-familiarity: Common
+familiarity: Emerging
 aliases:
   - zero-shot inference
   - zero-shot

@@ -138,7 +138,45 @@ TAXONOMY GUIDANCE:
 - type=Tool: software, products, platforms, services (Cursor, Claude Code, Vercel, Lovable)
 - type=Role: job titles or functional roles (FDE, AI engineer, prompt engineer)
 - topic: assign exactly ONE. If a term genuinely straddles, pick the most central topic and use related[] for cross-cluster relationships.
-- familiarity: Common (most builders know it) / Emerging (actively adopted, you're not behind if you don't know it) / Specialist (niche)
+- familiarity: assign by who would benefit from looking this up. The bar is the
+  AUDIENCE the term primarily serves, not what builders happen to know.
+  * Common: a curious non-technical reader (founder, PM, marketer, journalist,
+    operator) would plausibly encounter this in normal AI-moment discourse and
+    benefit from a plain-English definition. Major model families, mainstream-
+    reaching tools (Cursor, Perplexity, Claude Code, Copilot, Replit, Bolt,
+    NotebookLM, Sora), conversational-level concepts (RAG, system prompt,
+    hallucination, jailbreak, alignment, agentic coding, agent memory at
+    high level, fine-tuning at high level, vibe coding, prompt injection,
+    generative AI, LLM, foundation/frontier model, context window,
+    multimodal model), broadly-discussed roles (AI engineer, ML engineer,
+    prompt engineer, head of AI, AI PM, applied AI engineer), policy/regulatory
+    (EU AI Act, AI safety), founder-level business concepts (AI wrapper,
+    AI COGS, vertical AI, data moat, AI marketplace).
+  * Emerging: working builder vocabulary. Useful for someone actively shipping
+    AI products or making technical tooling/architecture decisions. Patterns
+    at implementation level (function calling, tool calling pattern, structured
+    output, prompt chaining, role prompting, task decomposition, multi-turn
+    conversation), agent internals (agent state, agent framework, agent
+    handoff, agent observability, agent skills, agentic IDE, agentic workflow),
+    builder tools beyond mainstream (Hugging Face, Vercel, Supabase, Figma,
+    JetBrains AI, Tabnine, Amazon Q Developer, Google AI Studio, Lovable, v0,
+    Veo, Devin), model internals at mid-level (base model, instruct model,
+    model card, model weights, temperature, token, transformer concept at
+    high level, inference at high level), niche roles (AI safety engineer,
+    AI red teamer, AI ethicist).
+  * Specialist: engineer/researcher deep cut. Under-the-hood mechanics, infra
+    primitives, niche tools, research jargon. KV cache, attention mechanism,
+    mechanistic interpretability, DPO, SFT, RLHF, vLLM, continuous batching,
+    speculative decoding, LoRA, quantization, mixture of experts, world model,
+    scaling laws, post-training, agent checkpoint, agent scaffold, model
+    distillation, A2A protocol, Constitutional AI, e2b, git worktree, LPU,
+    TTFT, OpenTelemetry for AI, serverless inference, ReAct prompting,
+    tree of thought, OpenAI-compatible API, CoreWeave, smolagents, Windsurf
+    Cascade specifics. Implementation-level model internals (transformer
+    architecture, RLHF as a training method).
+  Default tendency when uncertain: lean Emerging. Don't put model internals
+  (token, temperature, weights, inference) in Common. Don't put research
+  jargon (RLHF, transformer, scaling laws) in Common.
 
 ALIASES: Include alternate spellings, full-form expansions of acronyms, common variant phrasings. DO NOT include the term itself.
 

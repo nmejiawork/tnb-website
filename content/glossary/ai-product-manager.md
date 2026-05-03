@@ -3,7 +3,7 @@ slug: ai-product-manager
 term: AI Product Manager
 type: Role
 topic: Roles & Org
-familiarity: Emerging
+familiarity: Common
 aliases:
   - AI PM
   - product manager for AI

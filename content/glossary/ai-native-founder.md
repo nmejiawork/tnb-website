@@ -3,7 +3,7 @@ slug: ai-native-founder
 term: AI-native founder
 type: Role
 topic: Roles & Org
-familiarity: Emerging
+familiarity: Common
 aliases:
   - AI-first founder
   - AI builder-founder

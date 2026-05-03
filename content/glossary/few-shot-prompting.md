@@ -3,7 +3,7 @@ slug: few-shot-prompting
 term: Few-shot prompting
 type: Concept
 topic: Patterns & Practices
-familiarity: Common
+familiarity: Emerging
 aliases:
   - few-shot learning
   - in-context learning

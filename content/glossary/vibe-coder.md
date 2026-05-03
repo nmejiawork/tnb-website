@@ -3,7 +3,7 @@ slug: vibe-coder
 term: Vibe coder
 type: Role
 topic: Roles & Org
-familiarity: Emerging
+familiarity: Common
 aliases:
   - vibe engineer
   - vibe coding practitioner

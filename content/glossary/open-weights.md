@@ -3,7 +3,7 @@ slug: open-weights
 term: Open weights
 type: Concept
 topic: AI Models & Capabilities
-familiarity: Emerging
+familiarity: Common
 aliases:
   - open weight model
   - open-weight

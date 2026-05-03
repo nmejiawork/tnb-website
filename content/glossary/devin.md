@@ -3,7 +3,7 @@ slug: devin
 term: Devin
 type: Tool
 topic: Builder Tools
-familiarity: Emerging
+familiarity: Common
 aliases:
   - Cognition Devin
   - Cognition AI Devin

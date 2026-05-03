@@ -3,7 +3,7 @@ slug: iterative-prototyping
 term: Iterative prototyping
 type: Concept
 topic: Patterns & Practices
-familiarity: Common
+familiarity: Emerging
 aliases:
   - rapid prototyping with AI
   - AI-assisted iteration

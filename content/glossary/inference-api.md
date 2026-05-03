@@ -3,7 +3,7 @@ slug: inference-api
 term: Inference API
 type: Concept
 topic: Infrastructure
-familiarity: Common
+familiarity: Emerging
 aliases:
   - model API
   - LLM API

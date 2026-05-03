@@ -3,7 +3,7 @@ slug: serverless-inference
 term: Serverless inference
 type: Concept
 topic: Infrastructure
-familiarity: Emerging
+familiarity: Specialist
 aliases:
   - serverless LLM
   - pay-per-request inference

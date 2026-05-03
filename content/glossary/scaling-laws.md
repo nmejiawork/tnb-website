@@ -3,7 +3,7 @@ slug: scaling-laws
 term: Scaling laws
 type: Concept
 topic: AI Models & Capabilities
-familiarity: Common
+familiarity: Specialist
 aliases:
   - neural scaling laws
   - Chinchilla scaling

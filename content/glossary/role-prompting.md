@@ -3,7 +3,7 @@ slug: role-prompting
 term: Role prompting
 type: Concept
 topic: Patterns & Practices
-familiarity: Common
+familiarity: Emerging
 aliases:
   - persona prompting
   - system role

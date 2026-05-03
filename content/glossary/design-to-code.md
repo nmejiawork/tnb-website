@@ -3,7 +3,7 @@ slug: design-to-code
 term: Design-to-code
 type: Concept
 topic: Builder Tools
-familiarity: Common
+familiarity: Emerging
 aliases:
   - design to code
   - Figma to code

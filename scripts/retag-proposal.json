@@ -213,8 +213,8 @@
     },
     {
       "slug": "ai-trainer",
-      "familiarity": "Common",
-      "reason": "role discussed in mainstream AI coverage and policy discourse"
+      "familiarity": "Emerging",
+      "reason": "role discussed in mainstream AI coverage and policy discourse (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "ai-wrapper",
@@ -223,8 +223,8 @@
     },
     {
       "slug": "aiaas",
-      "familiarity": "Common",
-      "reason": "business model term used in tech and founder discourse"
+      "familiarity": "Emerging",
+      "reason": "business model term used in tech and founder discourse (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "aider",
@@ -283,23 +283,23 @@
     },
     {
       "slug": "byok",
-      "familiarity": "Common",
-      "reason": "pricing concept encountered in AI tool and founder discourse"
+      "familiarity": "Emerging",
+      "reason": "pricing concept encountered in AI tool and founder discourse (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "caio",
-      "familiarity": "Common",
-      "reason": "C-suite title covered broadly in business and tech press"
+      "familiarity": "Emerging",
+      "reason": "C-suite title covered broadly in business and tech press (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "chain-of-thought",
-      "familiarity": "Common",
-      "reason": "widely discussed prompting concept in AI newsletters and discourse"
+      "familiarity": "Emerging",
+      "reason": "widely discussed prompting concept in AI newsletters and discourse (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "chatgpt-agent",
-      "familiarity": "Common",
-      "reason": "mainstream OpenAI product feature covered in broad tech press"
+      "familiarity": "Emerging",
+      "reason": "mainstream OpenAI product feature covered in broad tech press (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "claude-artifacts",
@@ -368,8 +368,8 @@
     },
     {
       "slug": "context-engineering",
-      "familiarity": "Common",
-      "reason": "widely discussed concept in AI builder and product discourse"
+      "familiarity": "Emerging",
+      "reason": "widely discussed concept in AI builder and product discourse (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "context-poisoning",
@@ -523,8 +523,8 @@
     },
     {
       "slug": "extended-thinking",
-      "familiarity": "Common",
-      "reason": "model feature discussed in mainstream AI product discourse"
+      "familiarity": "Emerging",
+      "reason": "model feature discussed in mainstream AI product discourse (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "fde",
@@ -613,8 +613,8 @@
     },
     {
       "slug": "gpu-cloud",
-      "familiarity": "Common",
-      "reason": "concept in mainstream AI infrastructure and cost discourse"
+      "familiarity": "Emerging",
+      "reason": "concept in mainstream AI infrastructure and cost discourse (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "groq",
@@ -678,8 +678,8 @@
     },
     {
       "slug": "inference",
-      "familiarity": "Common",
-      "reason": "foundational concept increasingly discussed in mainstream AI coverage"
+      "familiarity": "Emerging",
+      "reason": "foundational concept increasingly discussed in mainstream AI coverage (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "inference-api",
@@ -903,8 +903,8 @@
     },
     {
       "slug": "model-weights",
-      "familiarity": "Common",
-      "reason": "widely referenced concept in open-source AI discourse"
+      "familiarity": "Emerging",
+      "reason": "widely referenced concept in open-source AI discourse (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "multi-agent",
@@ -918,8 +918,8 @@
     },
     {
       "slug": "multimodal-input",
-      "familiarity": "Common",
-      "reason": "widely discussed capability in mainstream AI product discourse"
+      "familiarity": "Emerging",
+      "reason": "widely discussed capability in mainstream AI product discourse (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "multimodal-model",
@@ -928,8 +928,8 @@
     },
     {
       "slug": "multimodal-output",
-      "familiarity": "Common",
-      "reason": "capability discussed in mainstream AI product and press coverage"
+      "familiarity": "Emerging",
+      "reason": "capability discussed in mainstream AI product and press coverage (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "n8n",
@@ -1148,8 +1148,8 @@
     },
     {
       "slug": "rlhf",
-      "familiarity": "Common",
-      "reason": "widely referenced alignment technique in mainstream AI discourse"
+      "familiarity": "Specialist",
+      "reason": "widely referenced alignment technique in mainstream AI discourse (manual: research-level jargon)"
     },
     {
       "slug": "role-prompting",
@@ -1248,13 +1248,13 @@
     },
     {
       "slug": "sycophancy",
-      "familiarity": "Common",
-      "reason": "widely discussed model behavior problem in AI discourse"
+      "familiarity": "Emerging",
+      "reason": "widely discussed model behavior problem in AI discourse (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "synthetic-data",
-      "familiarity": "Common",
-      "reason": "widely discussed concept in AI training and data discourse"
+      "familiarity": "Emerging",
+      "reason": "widely discussed concept in AI training and data discourse (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "system-prompt",
@@ -1263,8 +1263,8 @@
     },
     {
       "slug": "system-prompt-injection",
-      "familiarity": "Common",
-      "reason": "widely discussed AI security concept in mainstream discourse"
+      "familiarity": "Emerging",
+      "reason": "widely discussed AI security concept in mainstream discourse (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "tabnine",
@@ -1288,8 +1288,8 @@
     },
     {
       "slug": "temperature",
-      "familiarity": "Common",
-      "reason": "widely discussed model parameter in mainstream AI discourse"
+      "familiarity": "Emerging",
+      "reason": "widely discussed model parameter in mainstream AI discourse (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "together-ai",
@@ -1298,8 +1298,8 @@
     },
     {
       "slug": "token",
-      "familiarity": "Common",
-      "reason": "foundational unit of LLM operation, widely discussed in all discourse"
+      "familiarity": "Emerging",
+      "reason": "foundational unit of LLM operation, widely discussed in all discourse (manual: implementation-level, not beginner-conversational)"
     },
     {
       "slug": "token-budget",
@@ -1333,8 +1333,8 @@
     },
     {
       "slug": "transformer",
-      "familiarity": "Common",
-      "reason": "foundational architecture term widely referenced in AI discourse"
+      "familiarity": "Specialist",
+      "reason": "foundational architecture term widely referenced in AI discourse (manual: research-level jargon)"
     },
     {
       "slug": "tree-of-thought",

@@ -3,7 +3,7 @@ slug: agent-framework
 term: Agent framework
 type: Concept
 topic: Agents & Automation
-familiarity: Common
+familiarity: Emerging
 aliases:
   - ai agent framework
   - agentic framework

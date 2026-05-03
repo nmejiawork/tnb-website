@@ -3,7 +3,7 @@ slug: private-deployment
 term: Private deployment
 type: Concept
 topic: Infrastructure
-familiarity: Emerging
+familiarity: Common
 aliases:
   - on-premise AI
   - private cloud AI

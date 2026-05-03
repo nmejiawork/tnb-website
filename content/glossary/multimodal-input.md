@@ -3,7 +3,7 @@ slug: multimodal-input
 term: Multimodal Input
 type: Concept
 topic: AI Models & Capabilities
-familiarity: Common
+familiarity: Emerging
 aliases:
   - vision input
   - image input

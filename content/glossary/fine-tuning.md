@@ -3,7 +3,7 @@ slug: fine-tuning
 term: Fine-tuning
 type: Concept
 topic: Patterns & Practices
-familiarity: Emerging
+familiarity: Common
 aliases:
   - model fine-tuning
   - supervised fine-tuning

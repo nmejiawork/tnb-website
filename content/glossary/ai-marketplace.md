@@ -3,7 +3,7 @@ slug: ai-marketplace
 term: AI marketplace
 type: Concept
 topic: Business Models
-familiarity: Emerging
+familiarity: Common
 aliases:
   - agent marketplace
   - AI app store

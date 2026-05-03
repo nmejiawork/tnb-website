@@ -3,7 +3,7 @@ slug: reasoning-model
 term: Reasoning model
 type: Concept
 topic: AI Models & Capabilities
-familiarity: Emerging
+familiarity: Common
 aliases:
   - thinking model
   - extended thinking

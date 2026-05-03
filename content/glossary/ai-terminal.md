@@ -3,7 +3,7 @@ slug: ai-terminal
 term: AI terminal
 type: Concept
 topic: Builder Tools
-familiarity: Emerging
+familiarity: Common
 aliases:
   - AI-native terminal
   - agentic terminal

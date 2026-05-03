@@ -3,7 +3,7 @@ slug: agent-memory
 term: Agent memory
 type: Concept
 topic: Agents & Automation
-familiarity: Emerging
+familiarity: Common
 aliases:
   - ai memory
   - persistent memory

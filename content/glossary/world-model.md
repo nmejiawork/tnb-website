@@ -3,7 +3,7 @@ slug: world-model
 term: World model
 type: Concept
 topic: AI Models & Capabilities
-familiarity: Emerging
+familiarity: Specialist
 aliases:
   - AI world model
   - world modeling

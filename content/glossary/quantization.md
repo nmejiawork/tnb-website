@@ -3,7 +3,7 @@ slug: quantization
 term: Quantization
 type: Concept
 topic: Infrastructure
-familiarity: Emerging
+familiarity: Specialist
 aliases:
   - model quantization
   - weight quantization

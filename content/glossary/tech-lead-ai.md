@@ -3,7 +3,7 @@ slug: tech-lead-ai
 term: Tech lead (AI teams)
 type: Role
 topic: Roles & Org
-familiarity: Common
+familiarity: Emerging
 aliases:
   - AI tech lead
   - technical lead

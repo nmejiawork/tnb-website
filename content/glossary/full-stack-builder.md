@@ -3,7 +3,7 @@ slug: full-stack-builder
 term: Full-stack builder
 type: Role
 topic: Roles & Org
-familiarity: Emerging
+familiarity: Common
 aliases:
   - full-stack AI builder
   - AI builder

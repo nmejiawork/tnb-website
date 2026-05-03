@@ -3,7 +3,7 @@ slug: tool-calling-pattern
 term: Tool calling pattern
 type: Concept
 topic: Patterns & Practices
-familiarity: Common
+familiarity: Emerging
 aliases:
   - tool use pattern
   - function calling pattern

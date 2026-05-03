@@ -3,7 +3,7 @@ slug: structured-output
 term: Structured Output
 type: Concept
 topic: Patterns & Practices
-familiarity: Common
+familiarity: Emerging
 aliases:
   - structured outputs
   - JSON mode

@@ -3,7 +3,7 @@ slug: temperature
 term: Temperature
 type: Concept
 topic: AI Models & Capabilities
-familiarity: Common
+familiarity: Emerging
 aliases:
   - sampling temperature
   - LLM temperature

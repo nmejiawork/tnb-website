@@ -3,7 +3,7 @@ slug: ai-slop
 term: AI slop
 type: Concept
 topic: Patterns & Practices
-familiarity: Emerging
+familiarity: Common
 aliases:
   - slop
   - ai-generated slop

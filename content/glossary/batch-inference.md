@@ -3,7 +3,7 @@ slug: batch-inference
 term: Batch inference
 type: Concept
 topic: Infrastructure
-familiarity: Emerging
+familiarity: Specialist
 aliases:
   - batch processing
   - offline inference

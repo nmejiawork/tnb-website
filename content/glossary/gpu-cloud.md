@@ -3,7 +3,7 @@ slug: gpu-cloud
 term: GPU cloud
 type: Tool
 topic: Infrastructure
-familiarity: Common
+familiarity: Emerging
 aliases:
   - cloud GPU
   - GPU-as-a-service

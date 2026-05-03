@@ -3,7 +3,7 @@ slug: outcome-based-pricing
 term: Outcome-based pricing
 type: Concept
 topic: Business Models
-familiarity: Emerging
+familiarity: Common
 aliases:
   - results-based pricing
   - value-based pricing

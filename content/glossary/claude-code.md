@@ -3,7 +3,7 @@ slug: claude-code
 term: Claude Code
 type: Tool
 topic: Builder Tools
-familiarity: Emerging
+familiarity: Common
 aliases:
   - Claude code agent
 related:

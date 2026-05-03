@@ -3,7 +3,7 @@ slug: multi-turn-conversation
 term: Multi-turn conversation
 type: Concept
 topic: Patterns & Practices
-familiarity: Common
+familiarity: Emerging
 aliases:
   - multi-turn chat
   - conversational context

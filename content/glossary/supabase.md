@@ -3,7 +3,7 @@ slug: supabase
 term: Supabase
 type: Tool
 topic: Builder Tools
-familiarity: Common
+familiarity: Emerging
 aliases:
   - Supabase.io
 related:

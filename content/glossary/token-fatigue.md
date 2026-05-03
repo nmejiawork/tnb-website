@@ -3,7 +3,7 @@ slug: token-fatigue
 term: Token fatigue
 type: Concept
 topic: Business Models
-familiarity: Emerging
+familiarity: Common
 aliases:
   - token pricing fatigue
   - token opacity problem

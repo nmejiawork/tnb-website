@@ -3,7 +3,7 @@ slug: tabnine
 term: Tabnine
 type: Tool
 topic: Builder Tools
-familiarity: Common
+familiarity: Emerging
 aliases: []
 related:
   - copilot

@@ -3,7 +3,7 @@ slug: transformer
 term: Transformer
 type: Concept
 topic: AI Models & Capabilities
-familiarity: Common
+familiarity: Specialist
 aliases:
   - transformer architecture
   - transformer model

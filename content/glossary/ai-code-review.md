@@ -3,7 +3,7 @@ slug: ai-code-review
 term: AI code review
 type: Concept
 topic: Builder Tools
-familiarity: Emerging
+familiarity: Common
 aliases:
   - automated code review
   - AI PR review

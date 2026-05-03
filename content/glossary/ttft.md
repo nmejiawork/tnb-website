@@ -3,7 +3,7 @@ slug: ttft
 term: TTFT
 type: Concept
 topic: Infrastructure
-familiarity: Emerging
+familiarity: Specialist
 aliases:
   - Time to First Token
   - time-to-first-token

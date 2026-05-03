@@ -3,7 +3,7 @@ slug: vibe-coding
 term: Vibe coding
 type: Concept
 topic: Builder Tools
-familiarity: Emerging
+familiarity: Common
 aliases:
   - vibecoding
   - vibe-coding

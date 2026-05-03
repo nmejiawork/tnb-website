@@ -3,7 +3,7 @@ slug: subagents
 term: Subagents
 type: Concept
 topic: Agents & Automation
-familiarity: Emerging
+familiarity: Specialist
 aliases:
   - sub-agents
   - subagent

@@ -3,7 +3,7 @@ slug: model-card
 term: Model Card
 type: Concept
 topic: AI Models & Capabilities
-familiarity: Common
+familiarity: Emerging
 aliases:
   - model documentation
   - model spec

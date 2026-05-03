@@ -3,7 +3,7 @@ slug: ai-native-saas
 term: AI-native SaaS
 type: Concept
 topic: Business Models
-familiarity: Emerging
+familiarity: Common
 aliases:
   - AI-first SaaS
   - AI-native software

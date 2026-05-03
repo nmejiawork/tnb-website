@@ -3,7 +3,7 @@ slug: cursorrules
 term: .cursorrules
 type: Tool
 topic: Builder Tools
-familiarity: Common
+familiarity: Emerging
 aliases:
   - cursor rules
   - cursor rules file

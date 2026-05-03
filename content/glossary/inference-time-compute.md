@@ -3,7 +3,7 @@ slug: inference-time-compute
 term: Inference-time compute
 type: Concept
 topic: AI Models & Capabilities
-familiarity: Emerging
+familiarity: Common
 aliases:
   - test-time compute
   - TTC

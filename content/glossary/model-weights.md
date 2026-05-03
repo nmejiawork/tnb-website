@@ -3,7 +3,7 @@ slug: model-weights
 term: Model weights
 type: Concept
 topic: AI Models & Capabilities
-familiarity: Common
+familiarity: Emerging
 aliases:
   - weights
   - parameters

@@ -3,7 +3,7 @@ slug: fine-tuned-model-deployment
 term: Fine-tuned model deployment
 type: Concept
 topic: Infrastructure
-familiarity: Emerging
+familiarity: Specialist
 aliases:
   - custom model deployment
   - fine-tune serving

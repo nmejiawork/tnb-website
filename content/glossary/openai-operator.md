@@ -3,7 +3,7 @@ slug: openai-operator
 term: Operator
 type: Tool
 topic: Agents & Automation
-familiarity: Emerging
+familiarity: Common
 aliases:
   - ChatGPT Operator
   - OpenAI Operator

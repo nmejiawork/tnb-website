@@ -3,7 +3,7 @@ slug: agentic-rag
 term: Agentic RAG
 type: Concept
 topic: Agents & Automation
-familiarity: Emerging
+familiarity: Specialist
 aliases:
   - agent-based RAG
   - dynamic retrieval

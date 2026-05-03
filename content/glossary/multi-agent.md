@@ -3,7 +3,7 @@ slug: multi-agent
 term: Multi-agent system
 type: Concept
 topic: Agents & Automation
-familiarity: Emerging
+familiarity: Common
 aliases:
   - multi-agent
   - multi-agent architecture

@@ -3,7 +3,7 @@ slug: prompt-chaining
 term: Prompt chaining
 type: Concept
 topic: Patterns & Practices
-familiarity: Common
+familiarity: Emerging
 aliases:
   - LLM chaining
   - sequential prompting

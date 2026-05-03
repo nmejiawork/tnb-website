@@ -3,7 +3,7 @@ slug: orchestration
 term: Orchestration
 type: Concept
 topic: Agents & Automation
-familiarity: Emerging
+familiarity: Common
 aliases:
   - agent orchestration
   - workflow orchestration
