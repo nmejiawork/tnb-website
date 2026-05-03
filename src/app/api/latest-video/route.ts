@@ -5,6 +5,20 @@ const FALLBACK_VIDEO_ID = 'bKFXxGx6JhI'
 
 export const revalidate = 3600
 
+// Shorts redirect away from the /shorts/ URL when accessed with a non-mobile UA.
+// If the final URL still contains /shorts/, it's a Short — skip it.
+async function isShort(videoId: string): Promise<boolean> {
+  try {
+    const res = await fetch(`https://www.youtube.com/shorts/${videoId}`, {
+      redirect: 'follow',
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; bot)' },
+    })
+    return res.url.includes('/shorts/')
+  } catch {
+    return false
+  }
+}
+
 export async function GET() {
   try {
     const res = await fetch(
@@ -14,13 +28,19 @@ export async function GET() {
     if (!res.ok) throw new Error(`RSS fetch failed: ${res.status}`)
     const xml = await res.text()
 
-    const videoIdMatch = xml.match(/<yt:videoId>([^<]+)<\/yt:videoId>/)
-    if (!videoIdMatch) throw new Error('No videoId in RSS')
+    const videoIds = [...xml.matchAll(/<yt:videoId>([^<]+)<\/yt:videoId>/g)].map(m => m[1])
+    const mediaTitles = [...xml.matchAll(/<media:title>([^<]+)<\/media:title>/g)].map(m => m[1])
 
-    const allTitles = [...xml.matchAll(/<title>([^<]+)<\/title>/g)]
-    const title = allTitles[1]?.[1] ?? 'Latest Episode'
+    if (!videoIds.length) throw new Error('No videoIds in RSS')
 
-    return NextResponse.json({ videoId: videoIdMatch[1], title })
+    for (let i = 0; i < videoIds.length; i++) {
+      const videoId = videoIds[i]
+      if (await isShort(videoId)) continue
+      const title = mediaTitles[i] ?? 'Latest Episode'
+      return NextResponse.json({ videoId, title })
+    }
+
+    throw new Error('No long-form videos found in feed')
   } catch {
     return NextResponse.json({ videoId: FALLBACK_VIDEO_ID, title: 'Latest Episode' })
   }
