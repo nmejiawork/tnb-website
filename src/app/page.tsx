@@ -248,14 +248,14 @@ export default function Home() {
               style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
             />
           </div>
-          <div style={{ marginTop: 20 }}>
+          <div style={{ marginTop: 20, textAlign: "center", maxWidth: 800 }}>
             <a
               href={YT_CHANNEL}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ display: "inline-block", padding: "12px 22px", border: "1px solid #000", borderRadius: 8, fontSize: 14, fontWeight: 600, color: "#000" }}
-              onMouseEnter={e => { e.currentTarget.style.background = "#000"; e.currentTarget.style.color = "#fff"; }}
-              onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#000"; }}
+              style={{ display: "inline-block", padding: "12px 22px", background: "#FF0000", border: "1px solid #FF0000", borderRadius: 8, fontSize: 14, fontWeight: 600, color: "#fff" }}
+              onMouseEnter={e => { e.currentTarget.style.background = "#cc0000"; e.currentTarget.style.borderColor = "#cc0000"; }}
+              onMouseLeave={e => { e.currentTarget.style.background = "#FF0000"; e.currentTarget.style.borderColor = "#FF0000"; }}
             >
               View Channel →
             </a>
