@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import SubscribeForm from "./_components/SubscribeForm";
 
 const YT_CHANNEL = "https://www.youtube.com/@the_new_builder";
 const LINKEDIN = "https://www.linkedin.com/in/brianhecht/";
@@ -249,6 +248,18 @@ export default function Home() {
               style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
             />
           </div>
+          <div style={{ marginTop: 20 }}>
+            <a
+              href={YT_CHANNEL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: "inline-block", padding: "12px 22px", border: "1px solid #000", borderRadius: 8, fontSize: 14, fontWeight: 600, color: "#000" }}
+              onMouseEnter={e => { e.currentTarget.style.background = "#000"; e.currentTarget.style.color = "#fff"; }}
+              onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#000"; }}
+            >
+              View Channel →
+            </a>
+          </div>
         </section>
 
         <hr style={{ border: "none", borderTop: "1px solid #e5e7eb", marginBottom: 64 }} />
@@ -258,7 +269,14 @@ export default function Home() {
           <h2 style={{ fontSize: "clamp(28px, 3.5vw, 38px)", fontWeight: 800, marginBottom: 10 }}>
             Stay in the loop
           </h2>
-          <SubscribeForm />
+          <iframe
+            src="https://thenewbuilder.substack.com/embed"
+            title="Subscribe to The New Builder"
+            width="480"
+            height="320"
+            style={{ border: "1px solid #EEE", background: "white", display: "block" }}
+            frameBorder={0}
+          />
         </section>
 
         <hr style={{ border: "none", borderTop: "1px solid #e5e7eb", marginBottom: 64 }} />
