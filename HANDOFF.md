@@ -5,7 +5,7 @@
 The New Builder homepage at thenewbuilder.ai. Public-facing website for the TNB brand. **LIVE as of April 15, 2026.** Now includes a full **Dynamic Glossary** at `/glossary` (shipped May 1-2): **287 AI/builder terms** with weekly auto-update via Anthropic-grounded GitHub Actions cron, three-tier familiarity classification (Beginner / Builder / Engineer), reader-feedback loop (Suggest a term), on-page autocomplete search, and full SEO structured data.
 
 ## Tech Stack
-Next.js 16.2.1 (App Router), Tailwind CSS 4, Vercel hosting. Substack subscribe embed (Beehiiv pivot Apr 21). Glossary uses `gray-matter` for MD frontmatter parsing, `@anthropic-ai/sdk` for the cron (installed in workflow only, not in app deps).
+Next.js 16.2.1 (App Router), Tailwind CSS 4, Vercel hosting. Native subscribe form proxying to Substack's open `/api/v1/free` endpoint (no API key, no Beehiiv) — pivoted Apr 21 (Beehiiv → Substack iframe), then May 3 (iframe → native form). Glossary uses `gray-matter` for MD frontmatter parsing, `@anthropic-ai/sdk` for the cron (installed in workflow only, not in app deps).
 
 ## Repo History
 Created April 15, 2026 to separate the TNB website from `hc-website`. Previously, the thenewbuilder.ai placeholder lived on the `tnb-coming-soon` branch of `brhecht/hc-website`. That branch is deprecated and deleted.
@@ -15,7 +15,8 @@ Created April 15, 2026 to separate the TNB website from `hc-website`. Previously
 - `src/app/layout.tsx` — metadata (title: "The New Builder")
 - `src/app/globals.css` — base styles (system font, no animations)
 - `src/app/icon.svg` — favicon: 5x5 orange grid mark (#EE7C2A / #B0431F checkerboard)
-- `src/app/api/subscribe/route.ts` — Beehiiv email capture endpoint (legacy; subscribe form now uses Substack iframe)
+- `src/app/api/subscribe/route.ts` — Substack subscribe proxy. POSTs `application/x-www-form-urlencoded` to `https://thenewbuilder.substack.com/api/v1/free` with browser-mimicking headers. Returns JSON `{success}` / `{error}` for the client form.
+- `src/app/_components/SubscribeForm.tsx` — native subscribe form on the homepage's "Stay in the loop" section. Client component. Black Subscribe button + gray-bordered email input. Three states: idle / submitting / success / error. Replaces the prior Substack iframe (May 3, 2026).
 - `src/app/api/latest-video/route.ts` — YouTube RSS fetch, returns latest video ID (1h cache)
 - `src/app/api/suggest-term/route.ts` — POST handler for the Suggest a term form. Forwards to brain-inbox `/api/send-email`, recipient: brhnyc1970@gmail.com (To) + nico@humbleconviction.com (CC). Single-line flip-back if admin@thenewbuilder.ai gets configured.
 - `src/app/glossary/page.tsx` — `/glossary` index (SSG, browse-first card grid)
@@ -109,7 +110,7 @@ Top-level locked calls — refer to BUILD-SPEC.md for the full decision log:
 4. **Builders Figuring it Out. Together.** — 3x2 card grid (Podcast, YouTube, Newsletter, War Room, Meetups, Curated Events)
 5. **Glossary CTA band** — "New AI words coming at you fast?" with Browse the Glossary → button
 6. **Latest Episode** — YouTube embed (auto-fetched via `/api/latest-video` from channel RSS)
-7. **Stay in the loop** — Substack iframe embed (Beehiiv → Substack pivot Apr 21)
+7. **Stay in the loop** — native subscribe form (`<SubscribeForm />`) → `/api/subscribe` → Substack `/api/v1/free`. No iframe. (Pivoted Apr 21 Beehiiv → Substack iframe; pivoted May 3 iframe → native form.)
 8. **About Brian** — short bio
 9. **Footer** — copyright left; Glossary / LinkedIn / YouTube / Email links right
 
@@ -126,8 +127,10 @@ Top-level locked calls — refer to BUILD-SPEC.md for the full decision log:
 
 **Vercel (production):**
 ```
-BEEHIIV_API_KEY=          # legacy — only needed if /api/subscribe is wired in (it's not currently used; Substack iframe replaces)
-BEEHIIV_PUBLICATION_ID=
+# None required for current functionality.
+# /api/subscribe hits Substack's open endpoint — no API key.
+# Legacy BEEHIIV_API_KEY / BEEHIIV_PUBLICATION_ID may still be set in Vercel
+# project settings — fully unused as of May 3, 2026, safe to delete.
 ```
 
 **GitHub Actions Secrets on `brhecht/tnb-website`:**
